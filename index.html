@@ -13,6 +13,7 @@
   gtag('config', 'G-82C3CR2F9P');
 </script>
 
+<!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2200363624984381"
      crossorigin="anonymous"></script>
 
@@ -151,7 +152,6 @@ h3.chalk.typing{animation:typing 2s steps(50,end) forwards, glow 1.5s ease-in-ou
   transform-style:preserve-3d;
 }
 @keyframes rise{0%{transform:translateY(0) scale(1) rotateX(0deg) rotateY(0deg);opacity:0.8;}50%{transform:translateY(-200px) scale(1.2) rotateX(15deg) rotateY(15deg);opacity:0.9;}100%{transform:translateY(-110vh) scale(0.8) rotateX(30deg) rotateY(30deg);opacity:0;}}
-
 a{text-decoration:none;color:inherit;}
 </style>
 </head>
@@ -238,6 +238,7 @@ a{text-decoration:none;color:inherit;}
       <p>Hey! Long time no chat → هاي! لم نتحدث منذ فترة</p>
       <p>Greetings of the day → تحية اليوم (رسمي، للبريد)</p>
 
+      <!-- فيديو التحيات -->
       <div class="video">
           <a href="https://www.youtube.com/watch?v=NrQUvUcNsnw&t=14s" target="_blank">
               <img src="https://img.youtube.com/vi/NrQUvUcNsnw/hqdefault.jpg" alt="فيديو التحيات">
@@ -288,6 +289,14 @@ setInterval(()=>{
   createSideBubble(document.getElementById('bubble-container-left'));
   createSideBubble(document.getElementById('bubble-container-right'));
 },400);
+
+/* --- إعادة تحميل الصفحة لمرة واحدة --- */
+window.addEventListener('load', function() {
+  if (!sessionStorage.getItem('reloaded')) {
+    sessionStorage.setItem('reloaded', 'true'); 
+    setTimeout(()=>{ location.reload(true); }, 500);
+  } else { sessionStorage.removeItem('reloaded'); }
+});
 </script>
 
 </body>
