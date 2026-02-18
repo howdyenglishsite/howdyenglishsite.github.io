@@ -150,7 +150,31 @@ h3.chalk::after{ right:-25px; transform:scaleX(-1); }
 100%{transform:translateY(-110vh);}
 }
 
-a{color:white;text-decoration:none;margin-top:2rem;}
+/* رابط العودة ثلاثي الأبعاد أبيض صقيعي */
+.frost-link{
+  display:inline-block;
+  margin-top:2rem;
+  font-size:1.3rem;
+  font-weight:bold;
+  color:#f0f8ff;
+  text-decoration:none;
+  text-shadow:
+     1px 1px 0 #a0c4ff,
+     2px 2px 0 #80b0ff,
+     3px 3px 0 #60a0ff,
+     0 0 10px #ffffff,
+     0 0 20px #cce6ff;
+  transition:all 0.3s ease;
+}
+.frost-link:hover{
+  transform:scale(1.05);
+  text-shadow:
+     1px 1px 0 #ffffff,
+     2px 2px 0 #e0f0ff,
+     3px 3px 0 #cce6ff,
+     0 0 15px #ffffff,
+     0 0 30px #aaddff;
+}
 </style>
 </head>
 
@@ -228,7 +252,8 @@ a{color:white;text-decoration:none;margin-top:2rem;}
 <p>اضغط لمشاهدة الفيديو</p>
 </div>
 
-<a href="index.html">← العودة للصفحة الرئيسية</a>
+<!-- رابط العودة للصفحة الرئيسية -->
+<a href="index.html" class="frost-link">← العودة للصفحة الرئيسية</a>
 
 <script>
 function zoomText(scale){
