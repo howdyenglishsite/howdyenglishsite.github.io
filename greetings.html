@@ -10,23 +10,36 @@ if (!sessionStorage.getItem("reloadOnce")) {
     sessionStorage.setItem("reloadOnce", "true");
     location.reload();
 }
+
+/* التحكم بالزوم */
+let currentSize = 18;
+function zoomIn(){
+    currentSize += 2;
+    document.getElementById("contentBox").style.fontSize = currentSize + "px";
+}
+function zoomOut(){
+    if(currentSize > 14){
+        currentSize -= 2;
+        document.getElementById("contentBox").style.fontSize = currentSize + "px";
+    }
+}
 </script>
 
 <style>
 body{
     margin:0;
-    font-family:Tahoma;
+    font-family:Tahoma, Geneva, sans-serif;
     background:#080000;
     color:white;
     direction:rtl;
     overflow-x:hidden;
 }
 
-/* ===== ياقوت هندسي حقيقي ===== */
+/* ===== ياقوت هندسي متوهج ===== */
 .ruby{
     position:fixed;
-    width:240px;
-    height:240px;
+    width:220px;
+    height:220px;
     background:conic-gradient(
         from 0deg,
         #ff4d4d,
@@ -41,18 +54,17 @@ body{
         15% 85%, 0% 45%, 20% 15%
     );
     animation:rubyShine 5s infinite linear;
-    filter:drop-shadow(0 0 30px #ff0000);
+    filter:drop-shadow(0 0 35px #ff0000);
     opacity:0.95;
 }
-
-.r1{top:8%;left:5%;}
-.r2{bottom:8%;right:5%;}
-.r3{top:40%;right:40%;width:180px;height:180px;}
+.r1{top:5%;left:5%;}
+.r2{bottom:5%;right:5%;}
+.r3{top:40%;right:35%;width:180px;height:180px;}
 
 @keyframes rubyShine{
-    0%{transform:rotate(0deg) scale(1);filter:drop-shadow(0 0 15px #aa0000);}
-    50%{transform:rotate(2deg) scale(1.05);filter:drop-shadow(0 0 45px #ff0000);}
-    100%{transform:rotate(0deg) scale(1);filter:drop-shadow(0 0 15px #aa0000);}
+    0%{transform:rotate(0deg) scale(1);}
+    50%{transform:rotate(2deg) scale(1.05);}
+    100%{transform:rotate(0deg) scale(1);}
 }
 
 /* ===== صندوق أكواريوم ===== */
@@ -60,11 +72,40 @@ body{
     position:relative;
     width:85%;
     margin:60px auto;
-    padding:45px;
+    padding:50px;
     background:rgba(255,255,255,0.06);
     backdrop-filter:blur(14px);
     border-radius:25px;
     box-shadow:0 0 50px rgba(255,0,0,0.4);
+    font-size:18px;
+}
+
+/* ===== أزرار الزوم ===== */
+.zoom-controls{
+    position:absolute;
+    top:15px;
+    left:15px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.zoom-btn{
+    width:45px;
+    height:45px;
+    font-size:22px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    background:linear-gradient(45deg,#ff6600,#ff3300);
+    color:white;
+    box-shadow:0 0 15px #ff6600;
+    transition:0.3s;
+}
+
+.zoom-btn:hover{
+    transform:scale(1.1);
+    box-shadow:0 0 25px #ff9900;
 }
 
 /* ===== العناوين ===== */
@@ -73,6 +114,7 @@ h2{
     text-align:center;
     text-shadow:0 0 10px red,0 0 25px darkred;
     animation:titleGlow 3s infinite alternate;
+    margin-top:35px;
 }
 
 @keyframes titleGlow{
@@ -82,7 +124,7 @@ h2{
 
 p{
     line-height:2;
-    font-size:18px;
+    margin:0.3rem 0;
 }
 
 /* ===== الفيديو ===== */
@@ -119,7 +161,6 @@ p{
     box-shadow:0 0 15px rgba(255,255,255,0.3);
     transition:0.3s;
 }
-
 .frost-link:hover{
     background:rgba(255,255,255,0.15);
     box-shadow:0 0 25px rgba(255,255,255,0.6);
@@ -129,14 +170,17 @@ p{
 </head>
 <body>
 
-<!-- ياقوت -->
 <div class="ruby r1"></div>
 <div class="ruby r2"></div>
 <div class="ruby r3"></div>
 
-<div class="container">
+<div class="container" id="contentBox">
 
-<!-- فيديو -->
+<div class="zoom-controls">
+<button class="zoom-btn" onclick="zoomIn()">+</button>
+<button class="zoom-btn" onclick="zoomOut()">−</button>
+</div>
+
 <div class="video">
 <a href="https://www.youtube.com/watch?v=NrQUvUcNsnw&t=14s" target="_blank">
 <img src="https://img.youtube.com/vi/NrQUvUcNsnw/hqdefault.jpg">
@@ -150,42 +194,42 @@ Hello → مرحباً<br>
 Hi → أهلاً<br>
 Hey → هاي (غير رسمي جداً)<br>
 Good morning → صباح الخير<br>
-Good afternoon → مساء الخير<br>
-Good evening → مساء الخير<br>
-Good night → تصبح على خير<br>
+Good afternoon → مساء الخير (من الظهر حتى قبل المغرب)<br>
+Good evening → مساء الخير (بعد المغرب)<br>
+Good night → تصبح على خير (تستخدم عند وداع شخص قبل النوم)<br>
 How are you? → كيف حالك؟<br>
-How’s it going? → كيف الأمور؟<br>
+How’s it going? → كيف الأمور؟ (غير رسمي)<br>
 How do you do? → كيف حالك؟ (رسمي جداً)<br>
-What’s up? → ما الأخبار؟
+What’s up? / Wassup? → ما الأخبار؟ / شو في؟<br>
 </p>
 
 <h2>2️⃣ تحيات غير رسمية بين الأصدقاء</h2>
 <p>
-Yo → هاي / أهلاً<br>
-Sup → What’s up<br>
-Hiya → أهلاً<br>
+Yo → هاي / أهلاً (غير رسمي جداً، بين شباب)<br>
+Sup → اختصار لـ “What’s up?”<br>
+Hiya → أهلاً (غير رسمي)<br>
 Hey there → مرحباً هناك<br>
 Long time no see → لم نلتق منذ فترة<br>
-Howdy → مرحباً<br>
-How’s everything? → كيف كل شيء؟
+Howdy → مرحباً (شائع في الولايات المتحدة، له طابع ودود)<br>
+How’s everything? → كيف كل شيء؟<br>
 </p>
 
 <h2>3️⃣ تحيات رسمية أو مهذبة</h2>
 <p>
 Greetings → تحية رسمية<br>
 Good to see you → سررت برؤيتك<br>
-Pleased to meet you → سعيد بلقائك<br>
+Pleased to meet you → سعيد بلقائك (أول لقاء رسمي)<br>
 How have you been? → كيف كنت منذ آخر لقاء؟<br>
-It’s a pleasure to meet you → تشرفت بلقائك
+It’s a pleasure to meet you → تشرفت بلقائك<br>
 </p>
 
 <h2>4️⃣ تحيات صباحية/مسائية محددة</h2>
 <p>
-Morning! → صباح الخير<br>
-Afternoon! → مساء الخير<br>
-Evening! → مساء الخير<br>
-Rise and shine! → استيقظ وتألّق!<br>
-Have a nice day! → أتمنى لك يوماً سعيداً
+Morning! → صباح الخير (غير رسمي)<br>
+Afternoon! → مساء الخير (غير رسمي)<br>
+Evening! → مساء الخير (غير رسمي)<br>
+Rise and shine! → استيقظ وتألّق! (مرح صباحي)<br>
+Have a nice day! → أتمنى لك يوماً سعيداً<br>
 </p>
 
 <h2>5️⃣ تحيات وداع</h2>
@@ -195,17 +239,17 @@ See you → أراك لاحقاً<br>
 See you later → أراك لاحقاً<br>
 See you soon → أراك قريباً<br>
 Take care → اعتنِ بنفسك<br>
-Catch you later → أراك لاحقاً<br>
-Farewell → وداعاً<br>
-Have a good one → أتمنى لك وقتاً طيباً
+Catch you later → أراك لاحقاً (غير رسمي)<br>
+Farewell → وداعاً (رسمي وأدبي)<br>
+Have a good one → أتمنى لك وقتاً طيباً (غير رسمي)<br>
 </p>
 
 <h2>6️⃣ تحيات للمكالمات أو الرسائل</h2>
 <p>
-Hello, this is [Name] speaking → مرحباً، معك [الاسم]<br>
+Hello, this is [Name] speaking → مرحباً، معك [الاسم] (للمكالمات)<br>
 Hi, how are you doing? → أهلاً، كيف حالك؟<br>
 Hey! Long time no chat → هاي! لم نتحدث منذ فترة<br>
-Greetings of the day → تحية اليوم
+Greetings of the day → تحية اليوم (رسمي، للبريد)<br>
 </p>
 
 <br>
@@ -213,6 +257,5 @@ Greetings of the day → تحية اليوم
 <br>
 
 </div>
-
 </body>
 </html>
