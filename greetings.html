@@ -6,10 +6,12 @@
 
 <script>
 /* إعادة تحميل إجباري مرة واحدة */
-if (!sessionStorage.getItem("reloadOnce")) {
-    sessionStorage.setItem("reloadOnce", "true");
-    location.reload();
-}
+window.addEventListener('load', function() {
+  if (!sessionStorage.getItem('reloaded')) {
+    sessionStorage.setItem('reloaded', 'true'); 
+    setTimeout(()=>{ location.reload(true); }, 500);
+  } else { sessionStorage.removeItem('reloaded'); }
+});
 
 /* التحكم بالزوم */
 let currentSize = 18;
