@@ -2,165 +2,91 @@
 <html lang="ar">
 <head>
 <meta charset="UTF-8">
-<title>التحيات - Howdy English</title>
-
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XCGN3QQWVJ"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-XCGN3QQWVJ');
-</script>
-
-<!-- Google AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2200363624984381"
-crossorigin="anonymous"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>التحيات الإنجليزية</title>
 
 <style>
-html{ font-size:130%; }
 body{
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  direction:rtl;
   margin:0;
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  overflow-x:hidden;
-
-  /* خلفية ياقوت مرسوم */
-  background:#1e1e2f;
-  background-image:
-    radial-gradient(circle at 20% 30%, rgba(255,0,0,0.2) 10px, transparent 20px),
-    radial-gradient(circle at 50% 50%, rgba(255,0,0,0.15) 15px, transparent 30px),
-    radial-gradient(circle at 80% 70%, rgba(255,0,0,0.25) 8px, transparent 18px);
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  color:#f0f8ff;
-}
-
-/* --- عنوان رئيسي متوهج --- */
-.live-title{
-  font-size:2.5rem;
-  font-weight:bold;
-  text-align:center;
-  margin:2rem 0;
-  color:#00ffcc;
-  text-shadow:
-     0 0 5px #00ffcc,
-     0 0 10px #00ffcc,
-     0 0 20px #00ffcc,
-     0 0 40px #0ff;
-  animation:glow 2s ease-in-out infinite alternate;
-}
-
-@keyframes glow {
-  0% { text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 40px #0ff; }
-  50% { text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 30px #0ff, 0 0 60px #0ff; }
-  100% { text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 40px #0ff; }
-}
-
-/* أزرار Zoom */
-.zoom-controls{text-align:center;margin-bottom:1rem;}
-.zoom-controls button{
-  font-size:1rem;
-  padding:0.5rem 1rem;
-  margin:0 0.5rem;
-  border-radius:10px;
-  border:none;
-  background:linear-gradient(135deg,#ff416c,#ff4b2b);
+  font-family:Tahoma,Arial;
+  background:#0a0004;
   color:white;
-  cursor:pointer;
-  transition:all 0.3s ease;
+  text-align:center;
+  overflow-x:hidden;
 }
-.zoom-controls button:hover{transform:scale(1.05);}
 
-/* النصوص */
+/* خلفية الياقوت */
+.ruby-bg{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:-1;
+  overflow:hidden;
+}
+
+/* كل ياقوت */
+.ruby{
+  position:absolute;
+  width:130px;
+  height:130px;
+  animation:float 14s infinite ease-in-out;
+}
+
+/* حركة عائمة */
+@keyframes float{
+  0%{transform:translateY(0px) rotate(0deg);}
+  50%{transform:translateY(-25px) rotate(8deg);}
+  100%{transform:translateY(0px) rotate(0deg);}
+}
+
+/* لمعان قطري انسيابي */
+.ruby::after{
+  content:"";
+  position:absolute;
+  top:-60%;
+  left:-60%;
+  width:220%;
+  height:220%;
+  background:linear-gradient(
+    120deg,
+    transparent 35%,
+    rgba(255,255,255,0.95) 48%,
+    rgba(255,255,255,0.6) 52%,
+    transparent 65%
+  );
+  transform:rotate(25deg);
+  animation:shine 5s infinite linear;
+  mix-blend-mode:screen;
+}
+
+@keyframes shine{
+  0%{transform:translateX(-120%) rotate(25deg);}
+  100%{transform:translateX(120%) rotate(25deg);}
+}
+
+/* توهج العناوين */
+h2{
+  font-size:28px;
+  margin-top:50px;
+  text-shadow:
+    0 0 10px #ff003c,
+    0 0 20px #ff335f,
+    0 0 40px #ff1a4d;
+}
+
+/* تنسيق الفقرات */
 p{
-  font-family:'Comic Sans MS',cursive;
-  color:#FFD700;
-  text-shadow:1px 1px 2px #000;
-  margin:0.6rem 0;
-  font-size:1.1rem;
+  font-size:18px;
+  line-height:1.9;
 }
 
-/* --- العناوين المرقمة متوهجة مع أشعة تتبع --- */
-h3.chalk{
-  color:#0f0;
-  text-shadow:0 0 5px #0ff,0 0 10px #0ff,0 0 15px #0ff;
-  position:relative;
-  margin-top:1.5rem;
-}
-h3.chalk::before,
-h3.chalk::after{
-  content:'';
-  position:absolute;
-  top:50%;
-  width:20px;
-  height:2px;
-  background:linear-gradient(to right, #0ff, transparent);
-  animation:beam 2s linear infinite;
-}
-h3.chalk::before{ left:-25px; }
-h3.chalk::after{ right:-25px; transform:scaleX(-1); }
-@keyframes beam{
-  0%{ transform:translateX(0); }
-  50%{ transform:translateX(5px); }
-  100%{ transform:translateX(0); }
-}
-
-/* --- تصميم جملة الترجمة --- */
-.phrase-box{
-  background:rgba(0,0,0,0.5);
-  padding:12px 18px;
-  margin:12px auto;
-  width:90%;
-  max-width:600px;
-  border-radius:15px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  backdrop-filter:blur(5px);
-  box-shadow:0 8px 20px rgba(0,0,0,0.4);
-  transition:transform 0.3s ease, box-shadow 0.3s ease;
-}
-.phrase-box:hover{
-  transform:scale(1.05);
-  box-shadow:0 12px 25px rgba(0,0,0,0.6);
-}
-.english{ color:#00ffff; font-weight:bold; font-size:1.2rem; }
-.arrow{ color:#ffffff; font-size:1.2rem; margin:0 10px; }
-.arabic{ color:#FFD700; font-weight:bold; font-size:1.2rem; }
-
-/* فيديو */
-.video{margin:2rem 0;text-align:center;}
-.video img{max-width:100%;cursor:pointer;border-radius:20px;transition:transform 0.3s;}
-.video img:hover{transform:scale(1.05);}
-
-/* فقاعات */
-#bubble-container-left,#bubble-container-right{
-  position:fixed; top:0; width:3rem; height:100%; pointer-events:none; overflow:hidden;
-}
-#bubble-container-left{left:0;}
-#bubble-container-right{right:0;}
-.bubble-tube{
-  position:absolute;
-  bottom:0;
-  border-radius:50%;
-  background:radial-gradient(circle at 30% 30%, rgba(200,160,255,0.8), rgba(138,43,226,0.5));
-  animation:rise 10s linear infinite;
-}
-@keyframes rise{
-0%{transform:translateY(0);}
-100%{transform:translateY(-110vh);}
-}
-
-/* رابط العودة ثلاثي الأبعاد أبيض صقيعي */
+/* زر العودة الصقيعي */
 .frost-link{
   display:inline-block;
-  margin-top:2rem;
-  font-size:1.3rem;
+  margin:50px 0;
+  font-size:20px;
   font-weight:bold;
   color:#f0f8ff;
   text-decoration:none;
@@ -173,110 +99,117 @@ h3.chalk::after{ right:-25px; transform:scaleX(-1); }
   transition:all 0.3s ease;
 }
 .frost-link:hover{
-  transform:scale(1.05);
+  transform:scale(1.08);
   text-shadow:
      1px 1px 0 #ffffff,
      2px 2px 0 #e0f0ff,
      3px 3px 0 #cce6ff,
-     0 0 15px #ffffff,
-     0 0 30px #aaddff;
+     0 0 20px #ffffff,
+     0 0 40px #aaddff;
 }
 </style>
 </head>
 
 <body>
 
-<div id="bubble-container-left"></div>
-<div id="bubble-container-right"></div>
+<div class="ruby-bg">
 
-<h1 class="live-title">التحيات - Greetings</h1>
+  <div class="ruby" style="top:10%;left:8%;">
+    <svg viewBox="0 0 100 100">
+      <polygon points="50,5 95,35 75,95 25,95 5,35"
+      fill="url(#grad1)" stroke="#800020" stroke-width="2"/>
+      <defs>
+        <radialGradient id="grad1">
+          <stop offset="0%" stop-color="#ff5c7a"/>
+          <stop offset="50%" stop-color="#b00030"/>
+          <stop offset="100%" stop-color="#600018"/>
+        </radialGradient>
+      </defs>
+    </svg>
+  </div>
 
-<div class="zoom-controls">
-<button onclick="zoomText(1)">Zoom +</button>
-<button onclick="zoomText(-1)">Zoom -</button>
+  <div class="ruby" style="top:55%;left:75%;animation-duration:18s;">
+    <svg viewBox="0 0 100 100">
+      <polygon points="50,5 95,35 75,95 25,95 5,35"
+      fill="url(#grad2)" stroke="#800020" stroke-width="2"/>
+      <defs>
+        <radialGradient id="grad2">
+          <stop offset="0%" stop-color="#ff5c7a"/>
+          <stop offset="50%" stop-color="#b00030"/>
+          <stop offset="100%" stop-color="#600018"/>
+        </radialGradient>
+      </defs>
+    </svg>
+  </div>
+
 </div>
 
-<!-- المحتوى الكامل 1️⃣–6️⃣ -->
-<h3 class="chalk">1️⃣ التحيات اليومية العامة</h3>
-<div class="phrase-box"><span class="english">Hello</span><span class="arrow">↔</span><span class="arabic">مرحباً</span></div>
-<div class="phrase-box"><span class="english">Hi</span><span class="arrow">↔</span><span class="arabic">أهلاً</span></div>
-<div class="phrase-box"><span class="english">Hey</span><span class="arrow">↔</span><span class="arabic">هاي (غير رسمي جداً)</span></div>
-<div class="phrase-box"><span class="english">Good morning</span><span class="arrow">↔</span><span class="arabic">صباح الخير</span></div>
-<div class="phrase-box"><span class="english">Good afternoon</span><span class="arrow">↔</span><span class="arabic">مساء الخير (من الظهر حتى قبل المغرب)</span></div>
-<div class="phrase-box"><span class="english">Good evening</span><span class="arrow">↔</span><span class="arabic">مساء الخير (بعد المغرب)</span></div>
-<div class="phrase-box"><span class="english">Good night</span><span class="arrow">↔</span><span class="arabic">تصبح على خير (تستخدم عند وداع شخص قبل النوم)</span></div>
-<div class="phrase-box"><span class="english">How are you?</span><span class="arrow">↔</span><span class="arabic">كيف حالك؟</span></div>
-<div class="phrase-box"><span class="english">How’s it going?</span><span class="arrow">↔</span><span class="arabic">كيف الأمور؟ (غير رسمي)</span></div>
-<div class="phrase-box"><span class="english">How do you do?</span><span class="arrow">↔</span><span class="arabic">كيف حالك؟ (رسمي جداً)</span></div>
-<div class="phrase-box"><span class="english">What’s up? / Wassup?</span><span class="arrow">↔</span><span class="arabic">ما الأخبار؟ / شو في؟ (غير رسمي)</span></div>
+<!-- المحتوى الكامل -->
 
-<h3 class="chalk">2️⃣ تحيات غير رسمية بين الأصدقاء</h3>
-<div class="phrase-box"><span class="english">Yo</span><span class="arrow">↔</span><span class="arabic">هاي / أهلاً (غير رسمي جداً، بين شباب)</span></div>
-<div class="phrase-box"><span class="english">Sup</span><span class="arrow">↔</span><span class="arabic">اختصار لـ “What’s up?”</span></div>
-<div class="phrase-box"><span class="english">Hiya</span><span class="arrow">↔</span><span class="arabic">أهلاً (غير رسمي)</span></div>
-<div class="phrase-box"><span class="english">Hey there</span><span class="arrow">↔</span><span class="arabic">مرحباً هناك</span></div>
-<div class="phrase-box"><span class="english">Long time no see</span><span class="arrow">↔</span><span class="arabic">لم نلتق منذ فترة</span></div>
-<div class="phrase-box"><span class="english">Howdy</span><span class="arrow">↔</span><span class="arabic">مرحباً (شائع في الولايات المتحدة، له طابع ودود)</span></div>
-<div class="phrase-box"><span class="english">How’s everything?</span><span class="arrow">↔</span><span class="arabic">كيف كل شيء؟</span></div>
+<h2>1️⃣ التحيات اليومية العامة</h2>
+<p>Hello → مرحباً</p>
+<p>Hi → أهلاً</p>
+<p>Hey → هاي (غير رسمي جداً)</p>
+<p>Good morning → صباح الخير</p>
+<p>Good afternoon → مساء الخير (من الظهر حتى قبل المغرب)</p>
+<p>Good evening → مساء الخير (بعد المغرب)</p>
+<p>Good night → تصبح على خير (تستخدم عند وداع شخص قبل النوم)</p>
+<p>How are you? → كيف حالك؟</p>
+<p>How’s it going? → كيف الأمور؟ (غير رسمي)</p>
+<p>How do you do? → كيف حالك؟ (رسمي جداً)</p>
+<p>What’s up? / Wassup? → ما الأخبار؟ / شو في؟ (غير رسمي)</p>
 
-<h3 class="chalk">3️⃣ تحيات رسمية أو مهذبة</h3>
-<div class="phrase-box"><span class="english">Greetings</span><span class="arrow">↔</span><span class="arabic">تحية رسمية</span></div>
-<div class="phrase-box"><span class="english">Good to see you</span><span class="arrow">↔</span><span class="arabic">سررت برؤيتك</span></div>
-<div class="phrase-box"><span class="english">Pleased to meet you</span><span class="arrow">↔</span><span class="arabic">سعيد بلقائك (أول لقاء رسمي)</span></div>
-<div class="phrase-box"><span class="english">How have you been?</span><span class="arrow">↔</span><span class="arabic">كيف كنت منذ آخر لقاء؟</span></div>
-<div class="phrase-box"><span class="english">It’s a pleasure to meet you</span><span class="arrow">↔</span><span class="arabic">تشرفت بلقائك</span></div>
+<h2>2️⃣ تحيات غير رسمية بين الأصدقاء</h2>
+<p>Yo → هاي / أهلاً (غير رسمي جداً، بين شباب)</p>
+<p>Sup → اختصار لـ “What’s up?”</p>
+<p>Hiya → أهلاً (غير رسمي)</p>
+<p>Hey there → مرحباً هناك</p>
+<p>Long time no see → لم نلتق منذ فترة</p>
+<p>Howdy → مرحباً (شائع في الولايات المتحدة، له طابع ودود)</p>
+<p>How’s everything? → كيف كل شيء؟</p>
 
-<h3 class="chalk">4️⃣ تحيات صباحية/مسائية محددة</h3>
-<div class="phrase-box"><span class="english">Morning!</span><span class="arrow">↔</span><span class="arabic">صباح الخير (غير رسمي)</span></div>
-<div class="phrase-box"><span class="english">Afternoon!</span><span class="arrow">↔</span><span class="arabic">مساء الخير (غير رسمي)</span></div>
-<div class="phrase-box"><span class="english">Evening!</span><span class="arrow">↔</span><span class="arabic">مساء الخير (غير رسمي)</span></div>
-<div class="phrase-box"><span class="english">Rise and shine!</span><span class="arrow">↔</span><span class="arabic">استيقظ وتألّق! (مرح صباحي)</span></div>
-<div class="phrase-box"><span class="english">Have a nice day!</span><span class="arrow">↔</span><span class="arabic">أتمنى لك يوماً سعيداً</span></div>
+<h2>3️⃣ تحيات رسمية أو مهذبة</h2>
+<p>Greetings → تحية رسمية</p>
+<p>Good to see you → سررت برؤيتك</p>
+<p>Pleased to meet you → سعيد بلقائك (أول لقاء رسمي)</p>
+<p>How have you been? → كيف كنت منذ آخر لقاء؟</p>
+<p>It’s a pleasure to meet you → تشرفت بلقائك</p>
 
-<h3 class="chalk">5️⃣ تحيات وداع</h3>
-<div class="phrase-box"><span class="english">Bye / Goodbye</span><span class="arrow">↔</span><span class="arabic">وداعاً</span></div>
-<div class="phrase-box"><span class="english">See you</span><span class="arrow">↔</span><span class="arabic">أراك لاحقاً</span></div>
-<div class="phrase-box"><span class="english">See you later</span><span class="arrow">↔</span><span class="arabic">أراك لاحقاً</span></div>
-<div class="phrase-box"><span class="english">See you soon</span><span class="arrow">↔</span><span class="arabic">أراك قريباً</span></div>
-<div class="phrase-box"><span class="english">Take care</span><span class="arrow">↔</span><span class="arabic">اعتنِ بنفسك</span></div>
-<div class="phrase-box"><span class="english">Catch you later</span><span class="arrow">↔</span><span class="arabic">أراك لاحقاً (غير رسمي)</span></div>
-<div class="phrase-box"><span class="english">Farewell</span><span class="arrow">↔</span><span class="arabic">وداعاً (رسمي وأدبي)</span></div>
-<div class="phrase-box"><span class="english">Have a good one</span><span class="arrow">↔</span><span class="arabic">أتمنى لك وقتاً طيباً (غير رسمي)</span></div>
+<h2>4️⃣ تحيات صباحية/مسائية محددة</h2>
+<p>Morning! → صباح الخير (غير رسمي)</p>
+<p>Afternoon! → مساء الخير (غير رسمي)</p>
+<p>Evening! → مساء الخير (غير رسمي)</p>
+<p>Rise and shine! → استيقظ وتألّق! (مرح صباحي)</p>
+<p>Have a nice day! → أتمنى لك يوماً سعيداً</p>
 
-<h3 class="chalk">6️⃣ تحيات للمكالمات أو الرسائل</h3>
-<div class="phrase-box"><span class="english">Hello, this is [Name] speaking</span><span class="arrow">↔</span><span class="arabic">مرحباً، معك [الاسم] (للمكالمات)</span></div>
-<div class="phrase-box"><span class="english">Hi, how are you doing?</span><span class="arrow">↔</span><span class="arabic">أهلاً، كيف حالك؟</span></div>
-<div class="phrase-box"><span class="english">Hey! Long time no chat</span><span class="arrow">↔</span><span class="arabic">هاي! لم نتحدث منذ فترة</span></div>
-<div class="phrase-box"><span class="english">Greetings of the day</span><span class="arrow">↔</span><span class="arabic">تحية اليوم (رسمي، للبريد)</span></div>
+<h2>5️⃣ تحيات وداع</h2>
+<p>Bye / Goodbye → وداعاً</p>
+<p>See you → أراك لاحقاً</p>
+<p>See you later → أراك لاحقاً</p>
+<p>See you soon → أراك قريباً</p>
+<p>Take care → اعتنِ بنفسك</p>
+<p>Catch you later → أراك لاحقاً (غير رسمي)</p>
+<p>Farewell → وداعاً (رسمي وأدبي)</p>
+<p>Have a good one → أتمنى لك وقتاً طيباً (غير رسمي)</p>
 
-<!-- فيديو -->
-<div class="video">
-<a href="https://www.youtube.com/watch?v=NrQUvUcNsnw&t=14s" target="_blank">
-<img src="https://img.youtube.com/vi/NrQUvUcNsnw/hqdefault.jpg">
-</a>
-<p>اضغط لمشاهدة الفيديو</p>
-</div>
+<h2>6️⃣ تحيات للمكالمات أو الرسائل</h2>
+<p>Hello, this is [Name] speaking → مرحباً، معك [الاسم] (للمكالمات)</p>
+<p>Hi, how are you doing? → أهلاً، كيف حالك؟</p>
+<p>Hey! Long time no chat → هاي! لم نتحدث منذ فترة</p>
+<p>Greetings of the day → تحية اليوم (رسمي، للبريد)</p>
 
-<!-- رابط العودة -->
 <a href="index.html" class="frost-link">← العودة للصفحة الرئيسية</a>
 
 <script>
-function zoomText(scale){
-  var elements=document.querySelectorAll('p,h3.chalk,.phrase-box .english,.phrase-box .arabic');
-  elements.forEach(function(el){
-    var style=window.getComputedStyle(el,null).getPropertyValue('font-size');
-    var currentSize=parseFloat(style);
-    el.style.fontSize=(currentSize+scale*2)+'px';
-  });
-}
+window.addEventListener('load', function() {
+  if (!sessionStorage.getItem('reloaded')) {
+    sessionStorage.setItem('reloaded', 'true'); 
+    setTimeout(()=>{ location.reload(true); }, 500);
+  } else {
+    sessionStorage.removeItem('reloaded');
+  }
+});
+</script>
 
-/* فقاعات */
-function createSideBubble(container){
-  const bubble=document.createElement('div');
-  bubble.classList.add('bubble-tube');
-  const size=Math.random()*15+10;
-  bubble.style.width=size+'px';
-  bubble.style.height=size+'px';
-  bubble.style.left=Math.random()*(container.offsetWidth-size)+'px';
-  container.appendChild(bubble);
-  setTimeout(()=>{ bubble.remove(); }, 10000
+</body>
+</html>
