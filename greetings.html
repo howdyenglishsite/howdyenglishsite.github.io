@@ -26,10 +26,18 @@ body{
   min-height:100vh;
   display:flex;
   flex-direction:column;
-  background:linear-gradient(160deg,#1e3c72,#2a5298);
-  color:#f0f8ff;
   align-items:center;
   overflow-x:hidden;
+
+  /* خلفية ياقوت مرسوم */
+  background:#1e1e2f;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(255,0,0,0.2) 10px, transparent 20px),
+    radial-gradient(circle at 50% 50%, rgba(255,0,0,0.15) 15px, transparent 30px),
+    radial-gradient(circle at 80% 70%, rgba(255,0,0,0.25) 8px, transparent 18px);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  color:#f0f8ff;
 }
 
 /* --- عنوان رئيسي متوهج --- */
@@ -84,7 +92,6 @@ h3.chalk{
   position:relative;
   margin-top:1.5rem;
 }
-
 h3.chalk::before,
 h3.chalk::after{
   content:'';
@@ -97,7 +104,6 @@ h3.chalk::after{
 }
 h3.chalk::before{ left:-25px; }
 h3.chalk::after{ right:-25px; transform:scaleX(-1); }
-
 @keyframes beam{
   0%{ transform:translateX(0); }
   50%{ transform:translateX(5px); }
@@ -190,8 +196,7 @@ h3.chalk::after{ right:-25px; transform:scaleX(-1); }
 <button onclick="zoomText(-1)">Zoom -</button>
 </div>
 
-<!-- المحتوى -->
-
+<!-- المحتوى الكامل 1️⃣–6️⃣ -->
 <h3 class="chalk">1️⃣ التحيات اليومية العامة</h3>
 <div class="phrase-box"><span class="english">Hello</span><span class="arrow">↔</span><span class="arabic">مرحباً</span></div>
 <div class="phrase-box"><span class="english">Hi</span><span class="arrow">↔</span><span class="arabic">أهلاً</span></div>
@@ -252,7 +257,7 @@ h3.chalk::after{ right:-25px; transform:scaleX(-1); }
 <p>اضغط لمشاهدة الفيديو</p>
 </div>
 
-<!-- رابط العودة للصفحة الرئيسية -->
+<!-- رابط العودة -->
 <a href="index.html" class="frost-link">← العودة للصفحة الرئيسية</a>
 
 <script>
@@ -274,21 +279,4 @@ function createSideBubble(container){
   bubble.style.height=size+'px';
   bubble.style.left=Math.random()*(container.offsetWidth-size)+'px';
   container.appendChild(bubble);
-  setTimeout(()=>{ bubble.remove(); }, 10000);
-}
-setInterval(()=>{
-  createSideBubble(document.getElementById('bubble-container-left'));
-  createSideBubble(document.getElementById('bubble-container-right'));
-},400);
-
-/* --- إعادة تحميل الصفحة لمرة واحدة عند الدخول --- */
-window.addEventListener('load', function() {
-  if (!sessionStorage.getItem('reloaded')) {
-    sessionStorage.setItem('reloaded', 'true'); 
-    setTimeout(()=>{ location.reload(true); }, 500);
-  } else { sessionStorage.removeItem('reloaded'); }
-});
-</script>
-
-</body>
-</html>
+  setTimeout(()=>{ bubble.remove(); }, 10000
