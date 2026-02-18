@@ -5,9 +5,9 @@
 <title>English Greetings</title>
 
 <script>
-/* إعادة تحميل إجباري مرة واحدة عند الدخول */
-if (!sessionStorage.getItem("reloaded")) {
-    sessionStorage.setItem("reloaded", "true");
+/* إعادة تحميل إجباري مرة واحدة */
+if (!sessionStorage.getItem("reloadOnce")) {
+    sessionStorage.setItem("reloadOnce", "true");
     location.reload();
 }
 </script>
@@ -16,55 +16,68 @@ if (!sessionStorage.getItem("reloaded")) {
 body{
     margin:0;
     font-family:Tahoma;
-    background:#0b0000;
+    background:#080000;
     color:white;
     direction:rtl;
     overflow-x:hidden;
 }
 
-/* ===== خلفية الياقوت ===== */
+/* ===== ياقوت هندسي حقيقي ===== */
 .ruby{
     position:fixed;
-    width:220px;
-    height:220px;
-    background:radial-gradient(circle at 30% 30%, #ff4d4d, #8b0000 60%, #2b0000);
-    clip-path:polygon(50% 0%, 85% 25%, 100% 60%, 70% 100%, 30% 100%, 0% 60%, 15% 25%);
-    animation:shine 4s infinite ease-in-out;
-    filter:drop-shadow(0 0 25px red);
-    opacity:0.9;
+    width:240px;
+    height:240px;
+    background:conic-gradient(
+        from 0deg,
+        #ff4d4d,
+        #b30000,
+        #ff1a1a,
+        #660000,
+        #ff4d4d
+    );
+    clip-path:polygon(
+        50% 0%, 80% 15%, 100% 45%, 
+        85% 85%, 50% 100%, 
+        15% 85%, 0% 45%, 20% 15%
+    );
+    animation:rubyShine 5s infinite linear;
+    filter:drop-shadow(0 0 30px #ff0000);
+    opacity:0.95;
 }
-.r1{top:10%;left:5%;}
-.r2{bottom:10%;right:5%;}
-.r3{top:40%;right:40%;width:160px;height:160px;}
 
-@keyframes shine{
-    0%{transform:scale(1) rotate(0deg);filter:drop-shadow(0 0 10px red);}
-    50%{transform:scale(1.08) rotate(3deg);filter:drop-shadow(0 0 40px #ff0000);}
-    100%{transform:scale(1) rotate(0deg);filter:drop-shadow(0 0 10px red);}
+.r1{top:8%;left:5%;}
+.r2{bottom:8%;right:5%;}
+.r3{top:40%;right:40%;width:180px;height:180px;}
+
+@keyframes rubyShine{
+    0%{transform:rotate(0deg) scale(1);filter:drop-shadow(0 0 15px #aa0000);}
+    50%{transform:rotate(2deg) scale(1.05);filter:drop-shadow(0 0 45px #ff0000);}
+    100%{transform:rotate(0deg) scale(1);filter:drop-shadow(0 0 15px #aa0000);}
 }
 
-/* ===== صندوق المحتوى (أكواريوم) ===== */
+/* ===== صندوق أكواريوم ===== */
 .container{
     position:relative;
     width:85%;
-    margin:50px auto;
-    padding:40px;
-    background:rgba(255,255,255,0.05);
-    backdrop-filter:blur(12px);
-    border-radius:20px;
-    box-shadow:0 0 40px rgba(255,0,0,0.4);
+    margin:60px auto;
+    padding:45px;
+    background:rgba(255,255,255,0.06);
+    backdrop-filter:blur(14px);
+    border-radius:25px;
+    box-shadow:0 0 50px rgba(255,0,0,0.4);
 }
 
 /* ===== العناوين ===== */
 h2{
     color:#ff4d4d;
     text-align:center;
-    text-shadow:0 0 10px red,0 0 20px darkred;
+    text-shadow:0 0 10px red,0 0 25px darkred;
     animation:titleGlow 3s infinite alternate;
 }
+
 @keyframes titleGlow{
     from{text-shadow:0 0 5px red;}
-    to{text-shadow:0 0 25px #ff0000;}
+    to{text-shadow:0 0 30px #ff0000;}
 }
 
 p{
@@ -92,6 +105,26 @@ p{
     color:#ff9999;
 }
 
+/* ===== زر صقيعي ===== */
+.frost-link{
+    display:inline-block;
+    margin-top:40px;
+    padding:12px 25px;
+    color:white;
+    text-decoration:none;
+    border-radius:12px;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(8px);
+    border:1px solid rgba(255,255,255,0.2);
+    box-shadow:0 0 15px rgba(255,255,255,0.3);
+    transition:0.3s;
+}
+
+.frost-link:hover{
+    background:rgba(255,255,255,0.15);
+    box-shadow:0 0 25px rgba(255,255,255,0.6);
+    transform:translateY(-3px);
+}
 </style>
 </head>
 <body>
@@ -117,8 +150,8 @@ Hello → مرحباً<br>
 Hi → أهلاً<br>
 Hey → هاي (غير رسمي جداً)<br>
 Good morning → صباح الخير<br>
-Good afternoon → مساء الخير (من الظهر حتى قبل المغرب)<br>
-Good evening → مساء الخير (بعد المغرب)<br>
+Good afternoon → مساء الخير<br>
+Good evening → مساء الخير<br>
 Good night → تصبح على خير<br>
 How are you? → كيف حالك؟<br>
 How’s it going? → كيف الأمور؟<br>
@@ -129,7 +162,7 @@ What’s up? → ما الأخبار؟
 <h2>2️⃣ تحيات غير رسمية بين الأصدقاء</h2>
 <p>
 Yo → هاي / أهلاً<br>
-Sup → اختصار لـ What’s up<br>
+Sup → What’s up<br>
 Hiya → أهلاً<br>
 Hey there → مرحباً هناك<br>
 Long time no see → لم نلتق منذ فترة<br>
@@ -174,6 +207,10 @@ Hi, how are you doing? → أهلاً، كيف حالك؟<br>
 Hey! Long time no chat → هاي! لم نتحدث منذ فترة<br>
 Greetings of the day → تحية اليوم
 </p>
+
+<br>
+<a href="index.html" class="frost-link">← العودة للصفحة الرئيسية</a>
+<br>
 
 </div>
 
