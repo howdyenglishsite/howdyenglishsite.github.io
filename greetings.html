@@ -32,13 +32,25 @@ body{
   overflow-x:hidden;
 }
 
-/* عنوان */
+/* --- عنوان رئيسي متوهج --- */
 .live-title{
   font-size:2.5rem;
   font-weight:bold;
   text-align:center;
   margin:2rem 0;
   color:#00ffcc;
+  text-shadow:
+     0 0 5px #00ffcc,
+     0 0 10px #00ffcc,
+     0 0 20px #00ffcc,
+     0 0 40px #0ff;
+  animation:glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  0% { text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 40px #0ff; }
+  50% { text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 30px #0ff, 0 0 60px #0ff; }
+  100% { text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 40px #0ff; }
 }
 
 /* أزرار Zoom */
@@ -52,7 +64,9 @@ body{
   background:linear-gradient(135deg,#ff416c,#ff4b2b);
   color:white;
   cursor:pointer;
+  transition:all 0.3s ease;
 }
+.zoom-controls button:hover{transform:scale(1.05);}
 
 /* النصوص */
 p{
@@ -63,46 +77,32 @@ p{
   font-size:1.1rem;
 }
 
+/* --- العناوين المرقمة متوهجة مع أشعة تتبع --- */
 h3.chalk{
   color:#0f0;
-  text-shadow:0 0 10px #0ff;
+  text-shadow:0 0 5px #0ff,0 0 10px #0ff,0 0 15px #0ff;
+  position:relative;
   margin-top:1.5rem;
 }
 
-/* فيديو */
-.video{margin:2rem 0;text-align:center;}
-.video img{
-  max-width:100%;
-  cursor:pointer;
-  border-radius:20px;
-  transition:transform 0.3s;
-}
-.video img:hover{transform:scale(1.05);}
-
-/* فقاعات */
-#bubble-container-left,#bubble-container-right{
-  position:fixed;
-  top:0;
-  width:3rem;
-  height:100%;
-  pointer-events:none;
-  overflow:hidden;
-}
-#bubble-container-left{left:0;}
-#bubble-container-right{right:0;}
-.bubble-tube{
+h3.chalk::before,
+h3.chalk::after{
+  content:'';
   position:absolute;
-  bottom:0;
-  border-radius:50%;
-  background:radial-gradient(circle at 30% 30%, rgba(200,160,255,0.8), rgba(138,43,226,0.5));
-  animation:rise 10s linear infinite;
+  top:50%;
+  width:20px;
+  height:2px;
+  background:linear-gradient(to right, #0ff, transparent);
+  animation:beam 2s linear infinite;
 }
-@keyframes rise{
-0%{transform:translateY(0);}
-100%{transform:translateY(-110vh);}
-}
+h3.chalk::before{ left:-25px; }
+h3.chalk::after{ right:-25px; transform:scaleX(-1); }
 
-a{color:white;text-decoration:none;margin-top:2rem;}
+@keyframes beam{
+  0%{ transform:translateX(0); }
+  50%{ transform:translateX(5px); }
+  100%{ transform:translateX(0); }
+}
 
 /* --- تصميم جملة الترجمة --- */
 .phrase-box{
@@ -119,29 +119,38 @@ a{color:white;text-decoration:none;margin-top:2rem;}
   box-shadow:0 8px 20px rgba(0,0,0,0.4);
   transition:transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 .phrase-box:hover{
   transform:scale(1.05);
   box-shadow:0 12px 25px rgba(0,0,0,0.6);
 }
+.english{ color:#00ffff; font-weight:bold; font-size:1.2rem; }
+.arrow{ color:#ffffff; font-size:1.2rem; margin:0 10px; }
+.arabic{ color:#FFD700; font-weight:bold; font-size:1.2rem; }
 
-.english{
-  color:#00ffff;
-  font-weight:bold;
-  font-size:1.2rem;
+/* فيديو */
+.video{margin:2rem 0;text-align:center;}
+.video img{max-width:100%;cursor:pointer;border-radius:20px;transition:transform 0.3s;}
+.video img:hover{transform:scale(1.05);}
+
+/* فقاعات */
+#bubble-container-left,#bubble-container-right{
+  position:fixed; top:0; width:3rem; height:100%; pointer-events:none; overflow:hidden;
+}
+#bubble-container-left{left:0;}
+#bubble-container-right{right:0;}
+.bubble-tube{
+  position:absolute;
+  bottom:0;
+  border-radius:50%;
+  background:radial-gradient(circle at 30% 30%, rgba(200,160,255,0.8), rgba(138,43,226,0.5));
+  animation:rise 10s linear infinite;
+}
+@keyframes rise{
+0%{transform:translateY(0);}
+100%{transform:translateY(-110vh);}
 }
 
-.arrow{
-  color:#ffffff;
-  font-size:1.2rem;
-  margin:0 10px;
-}
-
-.arabic{
-  color:#FFD700;
-  font-weight:bold;
-  font-size:1.2rem;
-}
+a{color:white;text-decoration:none;margin-top:2rem;}
 </style>
 </head>
 
@@ -160,7 +169,6 @@ a{color:white;text-decoration:none;margin-top:2rem;}
 <!-- المحتوى -->
 
 <h3 class="chalk">1️⃣ التحيات اليومية العامة</h3>
-
 <div class="phrase-box"><span class="english">Hello</span><span class="arrow">↔</span><span class="arabic">مرحباً</span></div>
 <div class="phrase-box"><span class="english">Hi</span><span class="arrow">↔</span><span class="arabic">أهلاً</span></div>
 <div class="phrase-box"><span class="english">Hey</span><span class="arrow">↔</span><span class="arabic">هاي (غير رسمي جداً)</span></div>
@@ -174,7 +182,6 @@ a{color:white;text-decoration:none;margin-top:2rem;}
 <div class="phrase-box"><span class="english">What’s up? / Wassup?</span><span class="arrow">↔</span><span class="arabic">ما الأخبار؟ / شو في؟ (غير رسمي)</span></div>
 
 <h3 class="chalk">2️⃣ تحيات غير رسمية بين الأصدقاء</h3>
-
 <div class="phrase-box"><span class="english">Yo</span><span class="arrow">↔</span><span class="arabic">هاي / أهلاً (غير رسمي جداً، بين شباب)</span></div>
 <div class="phrase-box"><span class="english">Sup</span><span class="arrow">↔</span><span class="arabic">اختصار لـ “What’s up?”</span></div>
 <div class="phrase-box"><span class="english">Hiya</span><span class="arrow">↔</span><span class="arabic">أهلاً (غير رسمي)</span></div>
@@ -184,7 +191,6 @@ a{color:white;text-decoration:none;margin-top:2rem;}
 <div class="phrase-box"><span class="english">How’s everything?</span><span class="arrow">↔</span><span class="arabic">كيف كل شيء؟</span></div>
 
 <h3 class="chalk">3️⃣ تحيات رسمية أو مهذبة</h3>
-
 <div class="phrase-box"><span class="english">Greetings</span><span class="arrow">↔</span><span class="arabic">تحية رسمية</span></div>
 <div class="phrase-box"><span class="english">Good to see you</span><span class="arrow">↔</span><span class="arabic">سررت برؤيتك</span></div>
 <div class="phrase-box"><span class="english">Pleased to meet you</span><span class="arrow">↔</span><span class="arabic">سعيد بلقائك (أول لقاء رسمي)</span></div>
@@ -192,7 +198,6 @@ a{color:white;text-decoration:none;margin-top:2rem;}
 <div class="phrase-box"><span class="english">It’s a pleasure to meet you</span><span class="arrow">↔</span><span class="arabic">تشرفت بلقائك</span></div>
 
 <h3 class="chalk">4️⃣ تحيات صباحية/مسائية محددة</h3>
-
 <div class="phrase-box"><span class="english">Morning!</span><span class="arrow">↔</span><span class="arabic">صباح الخير (غير رسمي)</span></div>
 <div class="phrase-box"><span class="english">Afternoon!</span><span class="arrow">↔</span><span class="arabic">مساء الخير (غير رسمي)</span></div>
 <div class="phrase-box"><span class="english">Evening!</span><span class="arrow">↔</span><span class="arabic">مساء الخير (غير رسمي)</span></div>
@@ -200,7 +205,6 @@ a{color:white;text-decoration:none;margin-top:2rem;}
 <div class="phrase-box"><span class="english">Have a nice day!</span><span class="arrow">↔</span><span class="arabic">أتمنى لك يوماً سعيداً</span></div>
 
 <h3 class="chalk">5️⃣ تحيات وداع</h3>
-
 <div class="phrase-box"><span class="english">Bye / Goodbye</span><span class="arrow">↔</span><span class="arabic">وداعاً</span></div>
 <div class="phrase-box"><span class="english">See you</span><span class="arrow">↔</span><span class="arabic">أراك لاحقاً</span></div>
 <div class="phrase-box"><span class="english">See you later</span><span class="arrow">↔</span><span class="arabic">أراك لاحقاً</span></div>
@@ -211,7 +215,6 @@ a{color:white;text-decoration:none;margin-top:2rem;}
 <div class="phrase-box"><span class="english">Have a good one</span><span class="arrow">↔</span><span class="arabic">أتمنى لك وقتاً طيباً (غير رسمي)</span></div>
 
 <h3 class="chalk">6️⃣ تحيات للمكالمات أو الرسائل</h3>
-
 <div class="phrase-box"><span class="english">Hello, this is [Name] speaking</span><span class="arrow">↔</span><span class="arabic">مرحباً، معك [الاسم] (للمكالمات)</span></div>
 <div class="phrase-box"><span class="english">Hi, how are you doing?</span><span class="arrow">↔</span><span class="arabic">أهلاً، كيف حالك؟</span></div>
 <div class="phrase-box"><span class="english">Hey! Long time no chat</span><span class="arrow">↔</span><span class="arabic">هاي! لم نتحدث منذ فترة</span></div>
@@ -225,7 +228,6 @@ a{color:white;text-decoration:none;margin-top:2rem;}
 <p>اضغط لمشاهدة الفيديو</p>
 </div>
 
-<!-- زر رجوع -->
 <a href="index.html">← العودة للصفحة الرئيسية</a>
 
 <script>
