@@ -4,30 +4,8 @@
 <meta charset="UTF-8">
 <title>English Greetings</title>
 
-<script>
-/* إعادة تحميل إجباري مرة واحدة */
-window.addEventListener('load', function() {
-  if (!sessionStorage.getItem('reloaded')) {
-    sessionStorage.setItem('reloaded', 'true'); 
-    setTimeout(()=>{ location.reload(true); }, 500);
-  } else { sessionStorage.removeItem('reloaded'); }
-});
-
-/* التحكم بالزوم */
-let currentSize = 18;
-function zoomIn(){
-    currentSize += 2;
-    document.getElementById("contentBox").style.fontSize = currentSize + "px";
-}
-function zoomOut(){
-    if(currentSize > 14){
-        currentSize -= 2;
-        document.getElementById("contentBox").style.fontSize = currentSize + "px";
-    }
-}
-</script>
-
 <style>
+/* ===== الصفحة الأساسية ===== */
 body{
     margin:0;
     font-family:Tahoma, Geneva, sans-serif;
@@ -259,5 +237,31 @@ Greetings of the day → تحية اليوم (رسمي، للبريد)<br>
 <br>
 
 </div>
+
+<script>
+/* ===== التحكم بالزوم ===== */
+let currentSize = 18;
+function zoomIn(){
+    currentSize += 2;
+    document.getElementById("contentBox").style.fontSize = currentSize + "px";
+}
+function zoomOut(){
+    if(currentSize > 14){
+        currentSize -= 2;
+        document.getElementById("contentBox").style.fontSize = currentSize + "px";
+    }
+}
+
+/* ===== إعادة تحميل إجباري مرة واحدة ===== */
+window.addEventListener('load', function() {
+  if (!sessionStorage.getItem('reloaded')) {
+    sessionStorage.setItem('reloaded', 'true'); 
+    setTimeout(()=>{ location.reload(true); }, 500);
+  } else { 
+    sessionStorage.removeItem('reloaded'); 
+  }
+});
+</script>
+
 </body>
 </html>
