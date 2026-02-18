@@ -2,7 +2,7 @@
 <html lang="ar">
 <head>
 <meta charset="UTF-8">
-<title>������� - Howdy English</title>
+<title>التحيات - Howdy English</title>
 
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XCGN3QQWVJ"></script>
@@ -32,7 +32,7 @@ body{
   overflow-x:hidden;
 }
 
-/* ����� */
+/* عنوان */
 .live-title{
   font-size:2.5rem;
   font-weight:bold;
@@ -41,7 +41,7 @@ body{
   color:#00ffcc;
 }
 
-/* ����� Zoom */
+/* أزرار Zoom */
 .zoom-controls{text-align:center;margin-bottom:1rem;}
 .zoom-controls button{
   font-size:1rem;
@@ -54,7 +54,7 @@ body{
   cursor:pointer;
 }
 
-/* ������ */
+/* النصوص */
 p{
   font-family:'Comic Sans MS',cursive;
   color:#FFD700;
@@ -69,7 +69,7 @@ h3.chalk{
   margin-top:1.5rem;
 }
 
-/* ����� */
+/* فيديو */
 .video{margin:2rem 0;text-align:center;}
 .video img{
   max-width:100%;
@@ -79,7 +79,7 @@ h3.chalk{
 }
 .video img:hover{transform:scale(1.05);}
 
-/* ������ */
+/* فقاعات */
 #bubble-container-left,#bubble-container-right{
   position:fixed;
   top:0;
@@ -103,6 +103,45 @@ h3.chalk{
 }
 
 a{color:white;text-decoration:none;margin-top:2rem;}
+
+/* --- تصميم جملة الترجمة --- */
+.phrase-box{
+  background:rgba(0,0,0,0.5);
+  padding:12px 18px;
+  margin:12px auto;
+  width:90%;
+  max-width:600px;
+  border-radius:15px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  backdrop-filter:blur(5px);
+  box-shadow:0 8px 20px rgba(0,0,0,0.4);
+  transition:transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.phrase-box:hover{
+  transform:scale(1.05);
+  box-shadow:0 12px 25px rgba(0,0,0,0.6);
+}
+
+.english{
+  color:#00ffff;
+  font-weight:bold;
+  font-size:1.2rem;
+}
+
+.arrow{
+  color:#ffffff;
+  font-size:1.2rem;
+  margin:0 10px;
+}
+
+.arabic{
+  color:#FFD700;
+  font-weight:bold;
+  font-size:1.2rem;
+}
 </style>
 </head>
 
@@ -111,50 +150,87 @@ a{color:white;text-decoration:none;margin-top:2rem;}
 <div id="bubble-container-left"></div>
 <div id="bubble-container-right"></div>
 
-<h1 class="live-title">������� - Greetings</h1>
+<h1 class="live-title">التحيات - Greetings</h1>
 
 <div class="zoom-controls">
 <button onclick="zoomText(1)">Zoom +</button>
 <button onclick="zoomText(-1)">Zoom -</button>
 </div>
 
-<!-- ������� -->
-<h3 class="chalk">1?? ������� ������� ������</h3>
-<p>Hello ? ������</p>
-<p>Hi ? �����</p>
-<p>Hey ? ���</p>
-<p>Good morning ? ���� �����</p>
-<p>Good evening ? ���� �����</p>
-<p>How are you? ? ��� ���߿</p>
+<!-- المحتوى -->
 
-<h3 class="chalk">2?? ����� ��� �����</h3>
-<p>Yo ? ���</p>
-<p>Sup ? �� ������ѿ</p>
-<p>Howdy ? ������</p>
+<h3 class="chalk">1️⃣ التحيات اليومية العامة</h3>
 
-<h3 class="chalk">3?? ����� �����</h3>
-<p>Greetings ? ���� �����</p>
-<p>Pleased to meet you ? ���� ������</p>
+<div class="phrase-box"><span class="english">Hello</span><span class="arrow">↔</span><span class="arabic">مرحباً</span></div>
+<div class="phrase-box"><span class="english">Hi</span><span class="arrow">↔</span><span class="arabic">أهلاً</span></div>
+<div class="phrase-box"><span class="english">Hey</span><span class="arrow">↔</span><span class="arabic">هاي (غير رسمي جداً)</span></div>
+<div class="phrase-box"><span class="english">Good morning</span><span class="arrow">↔</span><span class="arabic">صباح الخير</span></div>
+<div class="phrase-box"><span class="english">Good afternoon</span><span class="arrow">↔</span><span class="arabic">مساء الخير (من الظهر حتى قبل المغرب)</span></div>
+<div class="phrase-box"><span class="english">Good evening</span><span class="arrow">↔</span><span class="arabic">مساء الخير (بعد المغرب)</span></div>
+<div class="phrase-box"><span class="english">Good night</span><span class="arrow">↔</span><span class="arabic">تصبح على خير (تستخدم عند وداع شخص قبل النوم)</span></div>
+<div class="phrase-box"><span class="english">How are you?</span><span class="arrow">↔</span><span class="arabic">كيف حالك؟</span></div>
+<div class="phrase-box"><span class="english">How’s it going?</span><span class="arrow">↔</span><span class="arabic">كيف الأمور؟ (غير رسمي)</span></div>
+<div class="phrase-box"><span class="english">How do you do?</span><span class="arrow">↔</span><span class="arabic">كيف حالك؟ (رسمي جداً)</span></div>
+<div class="phrase-box"><span class="english">What’s up? / Wassup?</span><span class="arrow">↔</span><span class="arabic">ما الأخبار؟ / شو في؟ (غير رسمي)</span></div>
 
-<h3 class="chalk">4?? ����� ����</h3>
-<p>Bye ? ������</p>
-<p>See you later ? ���� ������</p>
-<p>Take care ? ����� �����</p>
+<h3 class="chalk">2️⃣ تحيات غير رسمية بين الأصدقاء</h3>
 
-<!-- ����� -->
+<div class="phrase-box"><span class="english">Yo</span><span class="arrow">↔</span><span class="arabic">هاي / أهلاً (غير رسمي جداً، بين شباب)</span></div>
+<div class="phrase-box"><span class="english">Sup</span><span class="arrow">↔</span><span class="arabic">اختصار لـ “What’s up?”</span></div>
+<div class="phrase-box"><span class="english">Hiya</span><span class="arrow">↔</span><span class="arabic">أهلاً (غير رسمي)</span></div>
+<div class="phrase-box"><span class="english">Hey there</span><span class="arrow">↔</span><span class="arabic">مرحباً هناك</span></div>
+<div class="phrase-box"><span class="english">Long time no see</span><span class="arrow">↔</span><span class="arabic">لم نلتق منذ فترة</span></div>
+<div class="phrase-box"><span class="english">Howdy</span><span class="arrow">↔</span><span class="arabic">مرحباً (شائع في الولايات المتحدة، له طابع ودود)</span></div>
+<div class="phrase-box"><span class="english">How’s everything?</span><span class="arrow">↔</span><span class="arabic">كيف كل شيء؟</span></div>
+
+<h3 class="chalk">3️⃣ تحيات رسمية أو مهذبة</h3>
+
+<div class="phrase-box"><span class="english">Greetings</span><span class="arrow">↔</span><span class="arabic">تحية رسمية</span></div>
+<div class="phrase-box"><span class="english">Good to see you</span><span class="arrow">↔</span><span class="arabic">سررت برؤيتك</span></div>
+<div class="phrase-box"><span class="english">Pleased to meet you</span><span class="arrow">↔</span><span class="arabic">سعيد بلقائك (أول لقاء رسمي)</span></div>
+<div class="phrase-box"><span class="english">How have you been?</span><span class="arrow">↔</span><span class="arabic">كيف كنت منذ آخر لقاء؟</span></div>
+<div class="phrase-box"><span class="english">It’s a pleasure to meet you</span><span class="arrow">↔</span><span class="arabic">تشرفت بلقائك</span></div>
+
+<h3 class="chalk">4️⃣ تحيات صباحية/مسائية محددة</h3>
+
+<div class="phrase-box"><span class="english">Morning!</span><span class="arrow">↔</span><span class="arabic">صباح الخير (غير رسمي)</span></div>
+<div class="phrase-box"><span class="english">Afternoon!</span><span class="arrow">↔</span><span class="arabic">مساء الخير (غير رسمي)</span></div>
+<div class="phrase-box"><span class="english">Evening!</span><span class="arrow">↔</span><span class="arabic">مساء الخير (غير رسمي)</span></div>
+<div class="phrase-box"><span class="english">Rise and shine!</span><span class="arrow">↔</span><span class="arabic">استيقظ وتألّق! (مرح صباحي)</span></div>
+<div class="phrase-box"><span class="english">Have a nice day!</span><span class="arrow">↔</span><span class="arabic">أتمنى لك يوماً سعيداً</span></div>
+
+<h3 class="chalk">5️⃣ تحيات وداع</h3>
+
+<div class="phrase-box"><span class="english">Bye / Goodbye</span><span class="arrow">↔</span><span class="arabic">وداعاً</span></div>
+<div class="phrase-box"><span class="english">See you</span><span class="arrow">↔</span><span class="arabic">أراك لاحقاً</span></div>
+<div class="phrase-box"><span class="english">See you later</span><span class="arrow">↔</span><span class="arabic">أراك لاحقاً</span></div>
+<div class="phrase-box"><span class="english">See you soon</span><span class="arrow">↔</span><span class="arabic">أراك قريباً</span></div>
+<div class="phrase-box"><span class="english">Take care</span><span class="arrow">↔</span><span class="arabic">اعتنِ بنفسك</span></div>
+<div class="phrase-box"><span class="english">Catch you later</span><span class="arrow">↔</span><span class="arabic">أراك لاحقاً (غير رسمي)</span></div>
+<div class="phrase-box"><span class="english">Farewell</span><span class="arrow">↔</span><span class="arabic">وداعاً (رسمي وأدبي)</span></div>
+<div class="phrase-box"><span class="english">Have a good one</span><span class="arrow">↔</span><span class="arabic">أتمنى لك وقتاً طيباً (غير رسمي)</span></div>
+
+<h3 class="chalk">6️⃣ تحيات للمكالمات أو الرسائل</h3>
+
+<div class="phrase-box"><span class="english">Hello, this is [Name] speaking</span><span class="arrow">↔</span><span class="arabic">مرحباً، معك [الاسم] (للمكالمات)</span></div>
+<div class="phrase-box"><span class="english">Hi, how are you doing?</span><span class="arrow">↔</span><span class="arabic">أهلاً، كيف حالك؟</span></div>
+<div class="phrase-box"><span class="english">Hey! Long time no chat</span><span class="arrow">↔</span><span class="arabic">هاي! لم نتحدث منذ فترة</span></div>
+<div class="phrase-box"><span class="english">Greetings of the day</span><span class="arrow">↔</span><span class="arabic">تحية اليوم (رسمي، للبريد)</span></div>
+
+<!-- فيديو -->
 <div class="video">
 <a href="https://www.youtube.com/watch?v=NrQUvUcNsnw&t=14s" target="_blank">
 <img src="https://img.youtube.com/vi/NrQUvUcNsnw/hqdefault.jpg">
 </a>
-<p>���� ������� �������</p>
+<p>اضغط لمشاهدة الفيديو</p>
 </div>
 
-<!-- �� ���� -->
-<a href="index.html">? ������ ������ ��������</a>
+<!-- زر رجوع -->
+<a href="index.html">← العودة للصفحة الرئيسية</a>
 
 <script>
 function zoomText(scale){
-  var elements=document.querySelectorAll('p,h3');
+  var elements=document.querySelectorAll('p,h3.chalk,.phrase-box .english,.phrase-box .arabic');
   elements.forEach(function(el){
     var style=window.getComputedStyle(el,null).getPropertyValue('font-size');
     var currentSize=parseFloat(style);
@@ -162,7 +238,7 @@ function zoomText(scale){
   });
 }
 
-/* ������ */
+/* فقاعات */
 function createSideBubble(container){
   const bubble=document.createElement('div');
   bubble.classList.add('bubble-tube');
@@ -177,6 +253,14 @@ setInterval(()=>{
   createSideBubble(document.getElementById('bubble-container-left'));
   createSideBubble(document.getElementById('bubble-container-right'));
 },400);
+
+/* --- إعادة تحميل الصفحة لمرة واحدة عند الدخول --- */
+window.addEventListener('load', function() {
+  if (!sessionStorage.getItem('reloaded')) {
+    sessionStorage.setItem('reloaded', 'true'); 
+    setTimeout(()=>{ location.reload(true); }, 500);
+  } else { sessionStorage.removeItem('reloaded'); }
+});
 </script>
 
 </body>
