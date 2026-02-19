@@ -17,8 +17,11 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2200363624984381"
      crossorigin="anonymous"></script>
 
+<!-- Font Awesome for Social Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 <style>
-html{ font-size:130%; }
+html{ font-size:130%; scroll-behavior:smooth; } /* أضفت scroll-behavior */
 body{
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   direction:rtl;
@@ -30,6 +33,7 @@ body{
   color:#f0f8ff;
   align-items:center;
   overflow-x:hidden;
+  padding-bottom:4rem; /* مساحة للسبورة الاجتماعية */
 }
 
 /* --- العنوان الحيوي --- */
@@ -132,7 +136,7 @@ h3.chalk.typing{animation:typing 2s steps(50,end) forwards, glow 1.5s ease-in-ou
 .video img:hover{transform:rotateY(15deg) scale(1.05);box-shadow:0 15px 25px rgba(0,0,0,0.6);}
 .video p{text-align:center;font-style:italic;color:#ddd;margin-top:10px;}
 
-/* --- أزرار Zoom --- */
+/* --- Zoom --- */
 .zoom-controls{text-align:center;margin-bottom:1rem;}
 .zoom-controls button{font-size:1rem;padding:0.5rem 1rem;margin:0 0.5rem;border-radius:10px;border:none;background:linear-gradient(135deg,#ff416c,#ff4b2b);color:white;cursor:pointer;transition:all 0.3s ease;}
 .zoom-controls button:hover{transform:scale(1.05);}
@@ -153,6 +157,39 @@ h3.chalk.typing{animation:typing 2s steps(50,end) forwards, glow 1.5s ease-in-ou
 }
 @keyframes rise{0%{transform:translateY(0) scale(1) rotateX(0deg) rotateY(0deg);opacity:0.8;}50%{transform:translateY(-200px) scale(1.2) rotateX(15deg) rotateY(15deg);opacity:0.9;}100%{transform:translateY(-110vh) scale(0.8) rotateX(30deg) rotateY(30deg);opacity:0;}}
 a{text-decoration:none;color:inherit;}
+
+/* --- سبورة التواصل الاجتماعي --- */
+.social-bar{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  background:#FFD700; 
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:0.8rem 0;
+  gap:2rem;
+  box-shadow:0 -3px 10px rgba(0,0,0,0.3);
+  z-index:999;
+  font-weight:bold;
+}
+.social-bar a{
+  color:#000;
+  text-decoration:none;
+  font-size:1.2rem;
+  display:flex;
+  align-items:center;
+  gap:0.4rem;
+  transition:all 0.3s ease;
+}
+.social-bar a:hover{
+  transform:scale(1.1);
+  color:#ff4500;
+}
+.social-bar i{
+  font-size:1.4rem;
+}
 </style>
 </head>
 <body>
@@ -173,20 +210,36 @@ a{text-decoration:none;color:inherit;}
   <button class="accordion">المفردات</button>
   <div class="panel"><a href="greetings.html" class="accordion" style="display:block;text-align:center;">
 التحيات
-</a>
-
-  </div>
+</a></div>
 </div>
 
 <script>
-/* --- أكورديون --- */
+/* --- أكورديون مع صعود تلقائي لجميع الأزرار مهما كان العمق --- */
 var acc=document.getElementsByClassName("accordion");
 for(var i=0;i<acc.length;i++){
   acc[i].addEventListener("click",function(){
     var panel=this.nextElementSibling;
     if(panel && panel.classList.contains("panel")){
+      var isOpening = panel.style.display !== "block";
       this.classList.toggle("active");
-      panel.style.display=(panel.style.display==="block")?"none":"block";
+      panel.style.display = (panel.style.display === "block") ? "none" : "block";
+
+      if(isOpening){
+        // حساب المسافة من أعلى الصفحة حتى هذا الزر بدقة لجميع المستويات
+        var element=this;
+        var offsetTop=0;
+        while(element){
+          offsetTop += element.offsetTop;
+          element = element.offsetParent;
+        }
+
+        setTimeout(()=>{
+          window.scrollTo({
+            top: offsetTop - 10, 
+            behavior: "smooth"
+          });
+        },150);
+      }
     }
   });
 }
@@ -226,6 +279,14 @@ window.addEventListener('load', function() {
   } else { sessionStorage.removeItem('reloaded'); }
 });
 </script>
+
+<!-- --- سبورة التواصل الاجتماعي --- -->
+<div class="social-bar">
+  <a href="https://www.youtube.com/channel/UCFSquuv3GpfUA5RsB3esIfw" target="_blank"><i class="fab fa-youtube"></i> يوتيوب</a>
+  <a href="https://www.facebook.com/profile.php?id=61588006462049" target="_blank"><i class="fab fa-facebook"></i> فايسبوك</a>
+  <a href="https://www.tiktok.com/@howdy5english" target="_blank"><i class="fab fa-tiktok"></i> تيك توك</a>
+  <a href="https://www.instagram.com/howdy5english/" target="_blank"><i class="fab fa-instagram"></i> انستغرام</a>
+</div>
 
 </body>
 </html>
