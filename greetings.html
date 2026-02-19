@@ -143,13 +143,12 @@ p{
     transform:translateY(-3px);
 }
 
-/* ===== شريط التواصل الاجتماعي العمودي مع أيقونات عالية الخامات ===== */
+/* ===== شريط التواصل الاجتماعي العمودي ديناميكي / خامة عباد الشمس ===== */
 .social-bar{
     position:fixed;
     top:50%;
     left:0;
     transform:translateY(-50%);
-    background:#FFD700;
     display:flex;
     flex-direction:column;
     justify-content:center;
@@ -157,9 +156,19 @@ p{
     padding:1rem;
     gap:1rem;
     border-radius:0 15px 15px 0;
-    box-shadow:2px 2px 12px rgba(0,0,0,0.5);
+    box-shadow:2px 2px 15px rgba(0,0,0,0.6);
     z-index:999;
+
+    /* خامة عباد الشمس */
+    background: radial-gradient(circle at 20% 20%, #FFD700 5%, transparent 5%),
+                radial-gradient(circle at 40% 60%, #FFEC8B 5%, transparent 5%),
+                radial-gradient(circle at 70% 30%, #FFD700 5%, transparent 5%),
+                radial-gradient(circle at 60% 80%, #FFEC8B 5%, transparent 5%);
+    background-color:#FFD700;
+    background-size:40px 40px;
+    transition:0.4s;
 }
+
 .social-bar a{
     color:#000;
     text-decoration:none;
@@ -168,19 +177,64 @@ p{
     display:flex;
     align-items:center;
     gap:0.6rem;
-    text-shadow:2px 2px 8px rgba(0,0,0,0.7), 0 0 15px #fff;
-    transition:all 0.3s ease;
-}
-.social-bar a:hover{
-    transform:scale(1.1);
-    color:#ff4500;
-}
-.social-bar i{
-    font-size:1.8rem;
-    filter:drop-shadow(0 0 6px #fff) drop-shadow(0 0 8px #FFD700);
+    text-shadow:2px 2px 6px rgba(0,0,0,0.7);
+    transition:all 0.4s ease;
+    position:relative;
 }
 
-/* ===== أيقونات Font Awesome ===== */
+/* إضاءة خافتة دائمة */
+.social-bar a::before{
+    content:"";
+    position:absolute;
+    top:-5px; left:-5px; right:-5px; bottom:-5px;
+    background:radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    border-radius:50%;
+    filter:blur(8px);
+    opacity:0.3;
+    transition:0.4s;
+    z-index:-1;
+}
+
+/* ===== عند المرور أو النقر ===== */
+.social-bar a:hover::before,
+.social-bar a:active::before{
+    background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 50%);
+    filter:blur(15px);
+    opacity:0.7;
+}
+.social-bar a:hover,
+.social-bar a:active{
+    color:#ff4500;
+    text-shadow:0 0 20px #fff, 0 0 35px #FFD700, 0 0 50px #ff9900;
+}
+
+/* ===== أيقونات عالية الخامات ===== */
+.social-bar i{
+    font-size:2rem;
+    padding:5px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    background:linear-gradient(145deg,#ffcc00,#ff9900);
+    box-shadow:0 0 8px #fff, 0 0 12px #FFD700, inset 0 0 6px #fff;
+    transition:all 0.4s ease;
+    position:relative;
+}
+
+/* زيادة التوهج عند Hover */
+.social-bar a:hover i,
+.social-bar a:active i{
+    transform:scale(1.4) rotate(-10deg);
+    box-shadow:0 0 20px #fff, 0 0 50px #FFD700, 0 0 60px #ff9900, inset 0 0 12px #fff;
+}
+
+/* أيقونات لكل موقع لون خاص */
+.youtube-icon{background:linear-gradient(135deg,#ff0000,#cc0000);}
+.facebook-icon{background:linear-gradient(135deg,#1877f2,#0d47a1);}
+.tiktok-icon{background:linear-gradient(135deg,#69C9D0,#EE1D52);}
+.instagram-icon{background:linear-gradient(135deg,#feda75,#d62976,#4f5bd5);}
 </style>
 </head>
 <body>
@@ -223,7 +277,6 @@ p{
     What’s up? / Wassup? → ما الأخبار؟ / شو في؟<br>
     </p>
 
-    <!-- باقي التحيات -->
     <h2>2️⃣ تحيات غير رسمية بين الأصدقاء</h2>
     <p>
     Yo → هاي / أهلاً (غير رسمي جداً، بين شباب)<br>
@@ -278,7 +331,8 @@ p{
     <br>
 
 </div>
-<!-- شريط التواصل الاجتماعي العمودي عالي الخامات -->
+
+<!-- شريط التواصل الاجتماعي العمودي ديناميكي -->
 <div class="social-bar">
   <a href="https://www.youtube.com/channel/UCFSquuv3GpfUA5RsB3esIfw" target="_blank">
     <i class="fab fa-youtube youtube-icon"></i> يوتيوب
@@ -294,64 +348,7 @@ p{
   </a>
 </div>
 
-<style>
-.social-bar{
-    position:fixed;
-    top:50%;
-    left:0;
-    transform:translateY(-50%);
-    background:#FFD700;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:flex-start;
-    padding:1rem;
-    gap:1rem;
-    border-radius:0 15px 15px 0;
-    box-shadow:2px 2px 15px rgba(0,0,0,0.6);
-    z-index:999;
-}
-.social-bar a{
-    color:#000;
-    text-decoration:none;
-    font-size:1.2rem;
-    font-weight:bold;
-    display:flex;
-    align-items:center;
-    gap:0.6rem;
-    text-shadow:2px 2px 6px rgba(0,0,0,0.7);
-    transition:all 0.3s ease;
-}
-.social-bar a:hover{
-    transform:scale(1.1);
-    text-shadow:0 0 15px #fff, 0 0 25px #FFD700, 0 0 35px #ff9900;
-}
-
-/* ===== أيقونات عالية الخامات / Metallic Glow ===== */
-.social-bar i{
-    font-size:2rem;
-    padding:5px;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:white;
-    background:linear-gradient(145deg,#ffcc00,#ff9900);
-    box-shadow:0 0 8px #fff, 0 0 12px #FFD700, inset 0 0 6px #fff;
-    transition:all 0.3s ease;
-}
-.social-bar a:hover i{
-    transform:scale(1.3) rotate(-10deg);
-    box-shadow:0 0 12px #fff, 0 0 25px #FFD700, 0 0 40px #ff9900, inset 0 0 10px #fff;
-}
-
-/* أيقونات لكل موقع لون خاص */
-.youtube-icon{background:linear-gradient(135deg,#ff0000,#cc0000);}
-.facebook-icon{background:linear-gradient(135deg,#1877f2,#0d47a1);}
-.tiktok-icon{background:linear-gradient(135deg,#69C9D0,#EE1D52);}
-.instagram-icon{background:linear-gradient(135deg,#feda75,#d62976,#4f5bd5);}
-</style>
-
+<script>
 /* ===== التحكم بالزوم ===== */
 let currentSize = 18;
 function zoomIn(){
