@@ -148,7 +148,8 @@ p{
     position:fixed;
     top:50%;
     left:0;
-    transform:translateY(-50%);
+    transform:translateY(-50%) scale(2); /* تكبير مرتين */
+    transform-origin: left center; /* التكبير من الجهة اليسرى */
     display:flex;
     flex-direction:column;
     justify-content:center;
@@ -210,7 +211,7 @@ p{
 
 /* ===== أيقونات عالية الخامات ===== */
 .social-bar i{
-    font-size:2rem;
+    font-size:2rem; /* تكبير الأيقونات بما يتناسب */
     padding:5px;
     border-radius:50%;
     display:flex;
@@ -235,41 +236,6 @@ p{
 .facebook-icon{background:linear-gradient(135deg,#1877f2,#0d47a1);}
 .tiktok-icon{background:linear-gradient(135deg,#69C9D0,#EE1D52);}
 .instagram-icon{background:linear-gradient(135deg,#feda75,#d62976,#4f5bd5);}
-
-.social-bar{
-    position:fixed;
-    top:50%;
-    left:0;
-    transform:translateY(-50%);
-    background:#FFD700;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:flex-start;
-    padding:1rem;
-    gap:1rem;
-    border-radius:0 15px 15px 0;
-    box-shadow:2px 2px 12px rgba(0,0,0,0.5);
-    z-index:999;
-}
-.social-bar a{
-    color:#000;
-    text-decoration:none;
-    font-size:1.2rem;
-    font-weight:bold;
-    display:flex;
-    align-items:center;
-    gap:0.6rem;
-    text-shadow:2px 2px 8px rgba(0,0,0,0.7), 0 0 15px #fff;
-    transition:all 0.3s ease;
-}
-.social-bar a:hover{
-    transform:scale(1.1);
-    color:#ff4500;
-}
-.social-bar i{
-    font-size:1.8rem;
-    filter:drop-shadow(0 0 6px #fff) drop-shadow(0 0 8px #FFD700);
 
 </style>
 </head>
@@ -306,21 +272,21 @@ p{
     Good morning → صباح الخير<br>
     Good afternoon → مساء الخير (من الظهر حتى قبل المغرب)<br>
     Good evening → مساء الخير (بعد المغرب)<br>
-    Good night → تصبح على خير (تستخدم عند وداع شخص قبل النوم)<br>
+    Good night → تصبح على خير<br>
     How are you? → كيف حالك؟<br>
-    How’s it going? → كيف الأمور؟ (غير رسمي)<br>
-    How do you do? → كيف حالك؟ (رسمي جداً)<br>
-    What’s up? / Wassup? → ما الأخبار؟ / شو في؟<br>
+    How’s it going? → كيف الأمور؟<br>
+    How do you do? → كيف حالك؟<br>
+    What’s up? / Wassup? → ما الأخبار؟<br>
     </p>
 
     <h2>2️⃣ تحيات غير رسمية بين الأصدقاء</h2>
     <p>
-    Yo → هاي / أهلاً (غير رسمي جداً، بين شباب)<br>
+    Yo → هاي / أهلاً<br>
     Sup → اختصار لـ “What’s up?”<br>
-    Hiya → أهلاً (غير رسمي)<br>
+    Hiya → أهلاً<br>
     Hey there → مرحباً هناك<br>
     Long time no see → لم نلتق منذ فترة<br>
-    Howdy → مرحباً (شائع في الولايات المتحدة، له طابع ودود)<br>
+    Howdy → مرحباً<br>
     How’s everything? → كيف كل شيء؟<br>
     </p>
 
@@ -328,17 +294,17 @@ p{
     <p>
     Greetings → تحية رسمية<br>
     Good to see you → سررت برؤيتك<br>
-    Pleased to meet you → سعيد بلقائك (أول لقاء رسمي)<br>
+    Pleased to meet you → سعيد بلقائك<br>
     How have you been? → كيف كنت منذ آخر لقاء؟<br>
     It’s a pleasure to meet you → تشرفت بلقائك<br>
     </p>
 
     <h2>4️⃣ تحيات صباحية/مسائية محددة</h2>
     <p>
-    Morning! → صباح الخير (غير رسمي)<br>
-    Afternoon! → مساء الخير (غير رسمي)<br>
-    Evening! → مساء الخير (غير رسمي)<br>
-    Rise and shine! → استيقظ وتألّق! (مرح صباحي)<br>
+    Morning! → صباح الخير<br>
+    Afternoon! → مساء الخير<br>
+    Evening! → مساء الخير<br>
+    Rise and shine! → استيقظ وتألّق!<br>
     Have a nice day! → أتمنى لك يوماً سعيداً<br>
     </p>
 
@@ -349,17 +315,17 @@ p{
     See you later → أراك لاحقاً<br>
     See you soon → أراك قريباً<br>
     Take care → اعتنِ بنفسك<br>
-    Catch you later → أراك لاحقاً (غير رسمي)<br>
-    Farewell → وداعاً (رسمي وأدبي)<br>
-    Have a good one → أتمنى لك وقتاً طيباً (غير رسمي)<br>
+    Catch you later → أراك لاحقاً<br>
+    Farewell → وداعاً<br>
+    Have a good one → أتمنى لك وقتاً طيباً<br>
     </p>
 
     <h2>6️⃣ تحيات للمكالمات أو الرسائل</h2>
     <p>
-    Hello, this is [Name] speaking → مرحباً، معك [الاسم] (للمكالمات)<br>
+    Hello, this is [Name] speaking → مرحباً، معك [الاسم]<br>
     Hi, how are you doing? → أهلاً، كيف حالك؟<br>
     Hey! Long time no chat → هاي! لم نتحدث منذ فترة<br>
-    Greetings of the day → تحية اليوم (رسمي، للبريد)<br>
+    Greetings of the day → تحية اليوم<br>
     </p>
 
     <br>
@@ -407,6 +373,7 @@ window.addEventListener('load', function() {
     sessionStorage.removeItem('reloaded'); 
   }
 });
+
 /* ===== تمرير تلقائي بين أيقونات التواصل الاجتماعي ===== */
 const socialLinks = document.querySelectorAll('.social-bar a');
 let activeIndex = 0;
@@ -424,13 +391,11 @@ function highlightIcon(index){
     });
 }
 
-// تكرار تلقائي كل 2.5 ثانية
 setInterval(()=>{
     highlightIcon(activeIndex);
     activeIndex = (activeIndex + 1) % socialLinks.length;
 }, 2500);
 
-// للحفاظ على التأثير عند Hover أو النقر
 socialLinks.forEach(link=>{
     link.addEventListener('mouseenter', ()=>{
         highlightIcon(Array.from(socialLinks).indexOf(link));
