@@ -190,6 +190,57 @@ a{text-decoration:none;color:inherit;}
 .social-bar i{
   font-size:1.4rem;
 }
+/* --- تأثير hover ديناميكي تلقائي --- */
+.social-bar a.auto-hover{
+  transform:scale(1.15);
+  color:#ff4500 !important;
+  text-shadow:0 0 10px #fff, 0 0 20px #ff0000;
+}
+
+.social-bar a.auto-hover i{
+  transform:scale(1.2);
+  transition:0.3s;
+}
+/* ===== تأثير احترافي متوهج حسب المنصة ===== */
+
+.social-bar a{
+  position:relative;
+  padding:6px 12px;
+  border-radius:12px;
+  transition:all 0.4s ease;
+}
+
+/* يوتيوب */
+.social-bar a.youtube.auto-hover{
+  color:#fff !important;
+  background:#ff0000;
+  box-shadow:0 0 15px #ff0000, 0 0 35px #ff0000;
+}
+
+/* فايسبوك */
+.social-bar a.facebook.auto-hover{
+  color:#fff !important;
+  background:#1877f2;
+  box-shadow:0 0 15px #1877f2, 0 0 35px #1877f2;
+}
+
+/* تيك توك */
+.social-bar a.tiktok.auto-hover{
+  color:#fff !important;
+  background:#00f2ea;
+  box-shadow:0 0 15px #00f2ea, 0 0 35px #00f2ea;
+}
+
+/* انستغرام */
+.social-bar a.instagram.auto-hover{
+  color:#fff !important;
+  background:linear-gradient(45deg,#833ab4,#fd1d1d,#fcb045);
+  box-shadow:0 0 15px #d6249f, 0 0 35px #fcb045;
+}
+
+.social-bar a.auto-hover{
+  transform:scale(1.15);
+}
 </style>
 </head>
 <body>
@@ -282,11 +333,39 @@ window.addEventListener('load', function() {
 
 <!-- --- سبورة التواصل الاجتماعي --- -->
 <div class="social-bar">
-  <a href="https://www.youtube.com/channel/UCFSquuv3GpfUA5RsB3esIfw" target="_blank"><i class="fab fa-youtube"></i> يوتيوب</a>
-  <a href="https://www.facebook.com/profile.php?id=61588006462049" target="_blank"><i class="fab fa-facebook"></i> فايسبوك</a>
-  <a href="https://www.tiktok.com/@howdy5english" target="_blank"><i class="fab fa-tiktok"></i> تيك توك</a>
-  <a href="https://www.instagram.com/howdy5english/" target="_blank"><i class="fab fa-instagram"></i> انستغرام</a>
-</div>
+  <a href="https://www.youtube.com/channel/UCFSquuv3GpfUA5RsB3esIfw" target="_blank" class="youtube">
+    <i class="fab fa-youtube"></i> يوتيوب
+  </a>
 
+  <a href="https://www.facebook.com/profile.php?id=61588006462049" target="_blank" class="facebook">
+    <i class="fab fa-facebook"></i> فايسبوك
+  </a>
+
+  <a href="https://www.tiktok.com/@howdy5english" target="_blank" class="tiktok">
+    <i class="fab fa-tiktok"></i> تيك توك
+  </a>
+
+  <a href="https://www.instagram.com/howdy5english/" target="_blank" class="instagram">
+    <i class="fab fa-instagram"></i> انستغرام
+  </a>
+</div>
+<script>
+/* --- تشغيل hover تلقائي على أيقونات التواصل --- */
+const socialLinks = document.querySelectorAll(".social-bar a");
+let currentIndex = 0;
+
+function autoHoverEffect(){
+  socialLinks.forEach(link => link.classList.remove("auto-hover"));
+  socialLinks[currentIndex].classList.add("auto-hover");
+
+  currentIndex++;
+  if(currentIndex >= socialLinks.length){
+    currentIndex = 0;
+  }
+}
+
+autoHoverEffect();
+setInterval(autoHoverEffect,1500);
+</script>
 </body>
 </html>
