@@ -2,6 +2,9 @@
 <html lang="ar">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <title>English Greetings</title>
 
 <style>
@@ -148,8 +151,8 @@ p{
     position:fixed;
     top:50%;
     left:0;
-    transform:translateY(-50%) scale(2); /* تكبير مرتين */
-    transform-origin: left center; /* التكبير من الجهة اليسرى */
+    transform:translateY(-50%) scale(2);
+    transform-origin: left center;
     display:flex;
     flex-direction:column;
     justify-content:center;
@@ -159,8 +162,6 @@ p{
     border-radius:0 15px 15px 0;
     box-shadow:2px 2px 15px rgba(0,0,0,0.6);
     z-index:999;
-
-    /* خامة عباد الشمس */
     background: radial-gradient(circle at 20% 20%, #FFD700 5%, transparent 5%),
                 radial-gradient(circle at 40% 60%, #FFEC8B 5%, transparent 5%),
                 radial-gradient(circle at 70% 30%, #FFD700 5%, transparent 5%),
@@ -169,7 +170,6 @@ p{
     background-size:40px 40px;
     transition:0.4s;
 }
-
 .social-bar a{
     color:#000;
     text-decoration:none;
@@ -182,8 +182,6 @@ p{
     transition:all 0.4s ease;
     position:relative;
 }
-
-/* إضاءة خافتة دائمة */
 .social-bar a::before{
     content:"";
     position:absolute;
@@ -195,8 +193,6 @@ p{
     transition:0.4s;
     z-index:-1;
 }
-
-/* ===== عند المرور أو النقر ===== */
 .social-bar a:hover::before,
 .social-bar a:active::before{
     background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 50%);
@@ -208,10 +204,8 @@ p{
     color:#ff4500;
     text-shadow:0 0 20px #fff, 0 0 35px #FFD700, 0 0 50px #ff9900;
 }
-
-/* ===== أيقونات عالية الخامات ===== */
 .social-bar i{
-    font-size:2rem; /* تكبير الأيقونات بما يتناسب */
+    font-size:2rem;
     padding:5px;
     border-radius:50%;
     display:flex;
@@ -223,20 +217,15 @@ p{
     transition:all 0.4s ease;
     position:relative;
 }
-
-/* زيادة التوهج عند Hover */
 .social-bar a:hover i,
 .social-bar a:active i{
     transform:scale(1.4) rotate(-10deg);
     box-shadow:0 0 20px #fff, 0 0 50px #FFD700, 0 0 60px #ff9900, inset 0 0 12px #fff;
 }
-
-/* أيقونات لكل موقع لون خاص */
 .youtube-icon{background:linear-gradient(135deg,#ff0000,#cc0000);}
 .facebook-icon{background:linear-gradient(135deg,#1877f2,#0d47a1);}
 .tiktok-icon{background:linear-gradient(135deg,#69C9D0,#EE1D52);}
 .instagram-icon{background:linear-gradient(135deg,#feda75,#d62976,#4f5bd5);}
-
 </style>
 </head>
 <body>
@@ -262,6 +251,19 @@ p{
         </a>
         <p>اضغط لمشاهدة الفيديو</p>
     </div>
+
+    <!-- إعلان Google AdSense -->
+    <ins class="adsbygoogle"
+         style="display:block;margin:2rem auto;"
+         data-ad-client="ca-pub-2200363624984381"
+         data-ad-slot="2136925048"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2200363624984381"
+        crossorigin="anonymous"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
 
     <!-- محتوى التحيات -->
     <h2>1️⃣ التحيات اليومية العامة</h2>
@@ -353,56 +355,28 @@ p{
 <script>
 /* ===== التحكم بالزوم ===== */
 let currentSize = 18;
-function zoomIn(){
-    currentSize += 2;
-    document.getElementById("contentBox").style.fontSize = currentSize + "px";
-}
-function zoomOut(){
-    if(currentSize > 14){
-        currentSize -= 2;
-        document.getElementById("contentBox").style.fontSize = currentSize + "px";
-    }
-}
-
-/* ===== إعادة تحميل إجباري مرة واحدة ===== */
-window.addEventListener('load', function() {
-  if (!sessionStorage.getItem('reloaded')) {
-    sessionStorage.setItem('reloaded', 'true'); 
-    setTimeout(()=>{ location.reload(true); }, 500);
-  } else { 
-    sessionStorage.removeItem('reloaded'); 
-  }
-});
+function zoomIn(){ currentSize += 2; document.getElementById("contentBox").style.fontSize = currentSize + "px"; }
+function zoomOut(){ if(currentSize>14){ currentSize -=2; document.getElementById("contentBox").style.fontSize = currentSize + "px";} }
 
 /* ===== تمرير تلقائي بين أيقونات التواصل الاجتماعي ===== */
-const socialLinks = document.querySelectorAll('.social-bar a');
-let activeIndex = 0;
-
+const socialLinks=document.querySelectorAll('.social-bar a');
+let activeIndex=0;
 function highlightIcon(index){
-    socialLinks.forEach((link, i)=>{
-        const icon = link.querySelector('i');
-        if(i === index){
-            icon.style.transform = "scale(1.6) rotate(-10deg)";
-            icon.style.boxShadow = "0 0 30px #fff, 0 0 60px #FFD700, 0 0 70px #ff9900, inset 0 0 15px #fff";
-        } else {
-            icon.style.transform = "scale(1) rotate(0deg)";
-            icon.style.boxShadow = "0 0 8px #fff, 0 0 12px #FFD700, inset 0 0 6px #fff";
-        }
-    });
+  socialLinks.forEach((link,i)=>{
+    const icon=link.querySelector('i');
+    if(i===index){
+      icon.style.transform="scale(1.6) rotate(-10deg)";
+      icon.style.boxShadow="0 0 30px #fff, 0 0 60px #FFD700, 0 0 70px #ff9900, inset 0 0 15px #fff";
+    } else {
+      icon.style.transform="scale(1) rotate(0deg)";
+      icon.style.boxShadow="0 0 8px #fff, 0 0 12px #FFD700, inset 0 0 6px #fff";
+    }
+  });
 }
-
-setInterval(()=>{
-    highlightIcon(activeIndex);
-    activeIndex = (activeIndex + 1) % socialLinks.length;
-}, 2500);
-
+setInterval(()=>{ highlightIcon(activeIndex); activeIndex=(activeIndex+1)%socialLinks.length; },2500);
 socialLinks.forEach(link=>{
-    link.addEventListener('mouseenter', ()=>{
-        highlightIcon(Array.from(socialLinks).indexOf(link));
-    });
-    link.addEventListener('mouseleave', ()=>{
-        highlightIcon(activeIndex);
-    });
+  link.addEventListener('mouseenter',()=>{ highlightIcon(Array.from(socialLinks).indexOf(link)); });
+  link.addEventListener('mouseleave',()=>{ highlightIcon(activeIndex); });
 });
 </script>
 
