@@ -21,7 +21,7 @@
             background-color: var(--bg-light);
             color: var(--text-main);
             margin: 0;
-            padding: 20px;
+            padding: 15px; /* تقليل الحواف قليلاً للجوال */
             line-height: 1.6;
         }
 
@@ -38,70 +38,76 @@
         header {
             background: linear-gradient(135deg, var(--primary-blue), #4a6a8c);
             color: var(--white);
-            padding: 35px;
+            padding: 30px 15px; /* تقليل الحشو العلوي */
             text-align: center;
         }
 
         header h1 {
-            margin: 0 0 15px 0;
-            font-size: 1.8rem;
+            margin: 0 0 10px 0;
+            font-size: 1.6rem; /* حجم مرن للعنوان */
         }
 
         .intro-text {
             background: #fff;
-            padding: 20px;
-            margin: 20px;
+            padding: 15px;
+            margin: 15px;
             border-radius: 10px;
             border-right: 5px solid var(--accent-blue);
-            font-size: 1.05rem;
+            font-size: 1rem;
         }
 
         .content-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            padding: 20px;
+            grid-template-columns: 1fr 1fr; /* عمودين للحاسوب */
+            gap: 15px;
+            padding: 15px;
         }
 
         .section-box {
             background: var(--box-bg);
-            padding: 20px;
+            padding: 15px;
             border-radius: 12px;
             border: 1px solid #edf2f7;
         }
 
         h2 {
             color: var(--primary-blue);
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             margin-top: 0;
             border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 10px;
-            margin-bottom: 15px;
+            padding-bottom: 8px;
+            margin-bottom: 12px;
         }
 
         .vowel-list {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             justify-content: center;
             direction: ltr;
             margin: 15px 0;
+            flex-wrap: wrap; /* للسماح للحروف بالنزول لسطر جديد في الشاشات الصغيرة جداً */
         }
 
         .vowel-list span {
             background: var(--accent-blue);
             color: white;
-            padding: 10px 15px;
+            padding: 8px 12px;
             border-radius: 8px;
             font-weight: bold;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
         }
 
         .english-sub {
             display: block;
             direction: ltr;
             color: #7f8c8d;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             margin-top: 5px;
+        }
+
+        /* تحسين الجدول للجوال */
+        .table-wrapper {
+            overflow-x: auto; /* إضافة شريط تمرير أفقي إذا زاد حجم الجدول */
         }
 
         table {
@@ -109,11 +115,12 @@
             border-collapse: collapse;
             margin-top: 10px;
             background: white;
+            font-size: 0.95rem;
         }
 
         th, td {
             border: 1px solid #e2e8f0;
-            padding: 12px;
+            padding: 10px;
             text-align: center;
         }
 
@@ -122,15 +129,16 @@
             font-weight: 600;
         }
 
-        .correct { color: var(--success-green); font-weight: bold; background: #e8f5e9; border-radius: 4px; padding: 2px 6px; }
-        .incorrect { color: var(--error-red); text-decoration: line-through; background: #ffebee; border-radius: 4px; padding: 2px 6px; }
+        .correct { color: var(--success-green); font-weight: bold; background: #e8f5e9; border-radius: 4px; padding: 2px 4px; }
+        .incorrect { color: var(--error-red); text-decoration: line-through; background: #ffebee; border-radius: 4px; padding: 2px 4px; }
 
         .note-section {
             background: #fff9c4;
-            margin: 20px;
-            padding: 20px;
+            margin: 15px;
+            padding: 15px;
             border-radius: 10px;
             border-right: 5px solid #fbc02d;
+            font-size: 0.95rem;
         }
 
         .note-title {
@@ -140,8 +148,33 @@
             margin-bottom: 5px;
         }
 
+        /* --- إعدادات التجاوب الذكي (Responsive) --- */
         @media (max-width: 768px) {
-            .content-grid { grid-template-columns: 1fr; }
+            body { padding: 5px; } /* تقليل الحواف الخارجية */
+            
+            header h1 { font-size: 1.4rem; } /* تصغير العنوان الرئيسي */
+            
+            .content-grid { 
+                grid-template-columns: 1fr; /* جعل العناصر تحت بعضها في الجوال */
+                padding: 10px;
+            }
+
+            .vowel-list span {
+                padding: 6px 10px;
+                font-size: 1rem;
+            }
+
+            .section-box {
+                padding: 12px;
+            }
+
+            table {
+                font-size: 0.85rem; /* تصغير نص الجدول ليناسب الشاشة */
+            }
+            
+            td, th {
+                padding: 8px 5px;
+            }
         }
     </style>
 </head>
@@ -149,73 +182,74 @@
 
 <div class="lesson-container">
     <header>
-        <h1>الدّرس الثّاني: أدوات النكرة (Indefinite Articles: A & An)</h1>
+        <h1>الدّرس الثّاني: أدوات النكرة (Indefinite Articles)</h1>
     </header>
 
     <div class="intro-text">
-        في اللغة الإنجليزية، الاسم المفرد المعدود لا يأتي وحيداً إذا كان نكرة؛ بل يحتاج دائماً إلى أداة نكرة (Indefinite Article) تسبقه. هاتان الأداتان هما: <strong>A</strong> و <strong>An</strong>.
-        <span class="english-sub">Explanation: Every singular countable noun needs an article before it when it is indefinite.</span>
+        في اللغة الإنجليزية، الاسم المفرد المعدود لا يأتي وحيداً إذا كان نكرة؛ بل يحتاج دائماً إلى أداة نكرة تسبقه. هاتان الأداتان هما: <strong>A</strong> و <strong>An</strong>.
+        <span class="english-sub">Explanation: Singular countable nouns need "a" or "an" when they are indefinite.</span>
     </div>
 
     <div class="content-grid">
-        <!-- Right Section: Rules -->
+        <!-- قسم القواعد -->
         <div class="section-box">
-            <h2>كيفية استخدام أدوات النكرة؟</h2>
-            <p>أن الأمر كله يتعلق بـ <strong>سهولة النطق</strong> (Sound-driven Pronunciation):</p>
+            <h2>كيفية الاستخدام؟</h2>
+            <p>الأمر كله يتعلق بـ <strong>سهولة النطق</strong>:</p>
             <ul>
-                <li><strong>الاستخدام An:</strong> تستخدم إذا بدأت الكلمة بصوت علة (Vowel Sound)، وهي:</li>
+                <li><strong>استخدام An:</strong> إذا بدأت الكلمة بصوت علة (Vowel Sound):</li>
             </ul>
             <div class="vowel-list">
                 <span>A</span> <span>E</span> <span>I</span> <span>O</span> <span>U</span>
             </div>
-            <p>وذلك لمنع التصادم الصوتي ولنطق أكثر انسيابية (مثل <strong>An Apple</strong> وليس A Apple).</p>
+            <p>وذلك لمنع التصادم الصوتي (مثل <strong>An Apple</strong>).</p>
             <ul>
-                <li><strong>الاستخدام A:</strong> تستخدم مع جميع أصوات الحروف الساكنة (Consonant Sounds).</li>
+                <li><strong>استخدام A:</strong> مع بقية الأصوات الساكنة (Consonants).</li>
             </ul>
         </div>
 
-        <!-- Left Section: Table -->
+        <!-- قسم الجدول -->
         <div class="section-box">
-            <h2>الاستخدام الصحيح مقابل الخاطئ</h2>
+            <h2>أمثلة توضيحية</h2>
             <p class="english-sub" style="direction: rtl;">(Correct vs Incorrect Usage)</p>
-            <table>
-                <thead>
-                    <tr>
-                        <th>الحالة</th>
-                        <th dir="ltr">An</th>
-                        <th dir="ltr">A</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>الصحيح</strong></td>
-                        <td><span class="correct" dir="ltr">An Apple</span></td>
-                        <td><span class="correct" dir="ltr">A Phone</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>الخاطئ</strong></td>
-                        <td><span class="incorrect" dir="ltr">An Phone</span></td>
-                        <td><span class="incorrect" dir="ltr">A Apple</span></td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>الحالة</th>
+                            <th dir="ltr">An</th>
+                            <th dir="ltr">A</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>صح ✅</strong></td>
+                            <td><span class="correct" dir="ltr">An Apple</span></td>
+                            <td><span class="correct" dir="ltr">A Phone</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>خطأ ❌</strong></td>
+                            <td><span class="incorrect" dir="ltr">An Phone</span></td>
+                            <td><span class="incorrect" dir="ltr">A Apple</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
             
-            <div style="margin-top: 20px;">
-                <p><strong>أصوات العلة</strong> <span class="english-sub">(The Vowel Sounds)</span></p>
-                <p><strong>النطق والانسيابية الصوتية</strong> <span class="english-sub">(Pronunciation Flow)</span></p>
+            <div style="margin-top: 15px;">
+                <p><strong>النطق والانسيابية</strong> <span class="english-sub">(Pronunciation Flow)</span></p>
             </div>
         </div>
     </div>
 
     <div class="note-section">
-        <span class="note-title">Note: نصيحة للمتابعين</span>
-        تذكروا دائماً، نحن نتبع <strong>"الصوت"</strong> وليس مجرد الحرف المكتوب. العبرة دائماً بما تسمعه أذنيك!
-        <div dir="ltr" style="margin-top: 10px; font-weight: bold; color: var(--primary-blue);">
-            A Tip for Followers: Always remember, we follow the 'sound', not just the written letter. The rule is always what your ears hear!
+        <span class="note-title">💡 نصيحة مهمة:</span>
+        تذكروا دائماً، نحن نتبع <strong>"الصوت"</strong> وليس الحرف فقط. العبرة بما تسمعه أذنيك!
+        <div dir="ltr" style="margin-top: 8px; font-weight: bold; color: var(--primary-blue); font-size: 0.85rem;">
+            Tip: Always follow the 'sound', not just the written letter.
         </div>
     </div>
 
-    <footer style="text-align: center; padding: 20px; color: #7f8c8d; border-top: 1px solid #eee;">
+    <footer style="text-align: center; padding: 15px; color: #7f8c8d; border-top: 1px solid #eee; font-size: 0.8rem;">
         &copy; 2026 Edu English - تعليم اللغة الإنجليزية ببساطة
     </footer>
 </div>
