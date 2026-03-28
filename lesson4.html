@@ -3,195 +3,232 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>هيكل الجملة الإنجليزية</title>
+    <title>هيكل الجملة الإنجليزية - The Formula</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Poppins:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Poppins:wght@400;700;900&display=swap');
+
+        :root {
+            --primary-blue: #3a86ff;
+            --accent-yellow: #ffb703;
+            --danger-red: #d00000;
+            --bg-cream: #fdf6e3;
+            --success-green: #2b9348;
+        }
 
         body {
             font-family: 'Cairo', sans-serif;
-            background-color: #fdf6e3;
+            background-color: var(--bg-cream);
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             margin: 0;
-            padding: 20px;
+            padding: 15px;
         }
 
         .container {
             background-color: #ffffff;
             border: 4px solid #333;
-            border-radius: 15px;
+            border-radius: 20px;
             width: 100%;
-            max-width: 800px;
-            padding: 20px;
-            box-shadow: 10px 10px 0px #bee3db;
+            max-width: 750px;
+            padding: 30px 20px;
+            box-shadow: 12px 12px 0px #bee3db;
             text-align: center;
-            position: relative;
+            box-sizing: border-box;
         }
 
-        /* الجزء العلوي - العنوان */
+        /* الوسم العلوي */
         .header-badge {
-            background-color: #3a86ff;
+            background-color: var(--primary-blue);
             color: white;
-            padding: 10px 25px;
+            padding: 8px 20px;
             border-radius: 50px;
             display: inline-block;
-            font-weight: bold;
+            font-weight: 900;
             border: 3px solid #000;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
         }
 
         h1 {
             color: #2b2d42;
-            font-size: 2rem;
+            font-size: 1.8rem;
             margin: 10px 0;
+            line-height: 1.4;
         }
 
         .sub-text {
             color: #555;
             font-size: 1.1rem;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
-        /* الصيغة الذهبية */
+        /* صندوق المعادلة الذهبية */
         .formula-box {
             background: #8ecae6;
             border: 3px dashed #023047;
-            border-radius: 10px;
-            padding: 20px;
-            margin: 20px 0;
-            position: relative;
+            border-radius: 15px;
+            padding: 25px 10px;
+            margin: 25px 0;
         }
 
         .formula-title {
             font-family: 'Poppins', sans-serif;
             font-weight: 900;
-            font-size: 1.5rem;
-            color: #d00000;
+            font-size: 1.4rem;
+            color: var(--danger-red);
             text-transform: uppercase;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
         }
 
         .formula-content {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 15px;
-            font-size: 1.8rem;
+            gap: 10px;
+            font-size: 1.4rem;
             font-weight: bold;
             font-family: 'Poppins', sans-serif;
-            flex-wrap: wrap;
+            flex-wrap: wrap; /* للسماح للعناصر بالنزول في الجوال */
         }
 
         .formula-item {
             background: white;
-            padding: 5px 15px;
-            border-radius: 8px;
-            border: 2px solid #333;
+            padding: 8px 15px;
+            border-radius: 10px;
+            border: 3px solid #333;
+            box-shadow: 4px 4px 0px #333;
+            min-width: 100px;
         }
 
-        /* أمثلة الجمل */
+        .plus-sign {
+            font-size: 1.8rem;
+            color: #023047;
+        }
+
+        /* قسم الأمثلة */
         .examples {
             text-align: left;
             direction: ltr;
-            margin: 20px auto;
-            max-width: 500px;
+            margin: 25px auto;
+            max-width: 550px;
             font-family: 'Poppins', sans-serif;
-            font-size: 1.2rem;
         }
 
         .example-row {
-            padding: 8px;
-            border-bottom: 1px solid #eee;
+            padding: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
-        .check { color: #2b9348; font-weight: bold; }
+        .example-row b { color: var(--primary-blue); }
+        .check { color: var(--success-green); font-size: 1.3rem; }
 
-        /* التحدي السفلي */
+        /* قسم التحدي */
         .challenge-section {
-            background-color: #ffb703;
-            border-radius: 10px;
-            padding: 15px;
-            margin-top: 30px;
+            background-color: var(--accent-yellow);
+            border-radius: 15px;
+            padding: 25px 15px;
+            margin-top: 40px;
             border: 3px solid #000;
+            position: relative;
         }
 
         .challenge-title {
+            position: absolute;
+            top: -18px;
+            right: 20px;
             background: #000;
             color: #fff;
-            padding: 5px 15px;
-            display: inline-block;
-            border-radius: 5px;
-            margin-top: -30px;
+            padding: 5px 20px;
+            border-radius: 8px;
             font-weight: bold;
+            font-size: 1rem;
         }
 
         .verbs-list {
             font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            font-size: 1.4rem;
+            font-weight: 900;
+            font-size: 1.5rem;
             margin: 15px 0;
-            color: #d00000;
+            color: var(--danger-red);
+            word-spacing: 10px;
         }
 
         .footer-note {
             background: #212529;
             color: #fff;
-            padding: 10px;
-            font-size: 0.9rem;
-            border-radius: 5px;
+            padding: 12px;
+            font-size: 0.95rem;
+            border-radius: 8px;
+            line-height: 1.6;
         }
 
         .footer-note span {
-            color: #ffb703;
-            font-weight: bold;
+            color: var(--accent-yellow);
+            font-weight: 900;
         }
 
+        /* التجاوب مع الجوال */
         @media (max-width: 600px) {
-            .formula-content { font-size: 1.2rem; }
             h1 { font-size: 1.5rem; }
+            .formula-content { font-size: 1.1rem; gap: 5px; }
+            .formula-item { min-width: 80px; padding: 5px 10px; font-size: 1rem; }
+            .example-row { font-size: 0.95rem; }
+            .verbs-list { font-size: 1.2rem; }
+            .container { padding: 20px 15px; }
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <!-- العنوان العلوي -->
+    <!-- شارة العنوان -->
     <div class="header-badge">
-        🛠️ الفقرة الرابعة: هيكل الجملة (The Formula) ⚙️
+        🛠️ الدرس الرابع: هيكل الجملة (The Formula)
     </div>
 
     <h1>كيف تبني جملة إنجليزية سليمة؟</h1>
-    <p class="sub-text">الأمر يشبه تماماً ترتيب قطع الـ "ليغو"!</p>
+    <p class="sub-text">الأمر بسيط.. رتّب القطع بالترتيب الصحيح! 🧩</p>
 
-    <!-- صندوق القاعدة -->
+    <!-- صندوق المعادلة الذهبية -->
     <div class="formula-box">
         <div class="formula-title">The Golden Formula:</div>
         <div class="formula-content">
-            [ <div class="formula-item">👤 Subject</div> 
-            + 
+            <div class="formula-item">👤 Subject</div> 
+            <span class="plus-sign">+</span>
             <div class="formula-item">💥 Verb</div> 
-            + 
-            <div class="formula-item">📦 Object</div> ]
+            <span class="plus-sign">+</span>
+            <div class="formula-item">📦 Object</div>
         </div>
     </div>
 
     <!-- الأمثلة -->
     <div class="examples">
-        <div class="example-row">1. <b>I + eat + an apple</b> &nbsp; ➔ &nbsp; I eat an apple. <span class="check">✔</span></div>
-        <div class="example-row">2. <b>They + play + football</b> &nbsp; ➔ &nbsp; They play football. <span class="check">✔</span></div>
+        <div class="example-row">
+            <span><b>I + eat + an apple</b></span>
+            <span class="check">✔</span>
+        </div>
+        <div class="example-row">
+            <span><b>They + play + football</b></span>
+            <span class="check">✔</span>
+        </div>
     </div>
 
     <!-- قسم التحدي -->
     <div class="challenge-section">
-        <div class="challenge-title">✍️ تحدي المتابعين</div>
-        <p>استخدموا هذه الأفعال القوية وابنوا جملتكم الخاصة في منصتنا  على مواقعنا فايسبوك و انستغرام :</p>
+        <div class="challenge-title">✍️ تحدي المبدعين</div>
+        <p>استخدموا هذه الأفعال القوية وابنوا جملتكم الخاصة في التعليقات:</p>
         <div class="verbs-list">
-            Eat, Drink, Play, Have, Like
+            Eat Drink Play Have Like
         </div>
         <div class="footer-note">
-            <span>نصيحة للمبدعين:</span> حاولوا استخدام قاعدة (A & An) التي تعلمناها في الفقرة السابقة!
+            <span>💡 نصيحة ذكية:</span> لا تنسوا تطبيق قاعدة <b>(A & An)</b> التي شرحناها سابقاً عند كتابة جملكم!
         </div>
     </div>
 </div>
