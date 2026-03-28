@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أساسيات قواعد اللغة الإنجليزية - English Grammar Foundation</title>
+    <style>
+        /* تعريف الألوان كمتغيرات لتسهيل التعديل */
+        :root {
+            --bg-color: #f0f4f8; /* خلفية الصفحة - رمادي مزرق فاتح جداً */
+            --card-bg: #ffffff;   /* خلفية البطاقة - أبيض ناصع */
+            --text-main: #2c3e50;  /* لون النص الأساسي - أزرق داكن */
+            --text-sub: #576574;   /* لون النص الفرعي - رمادي */
+            
+            /* ألوان الأقسام (هادئة وخفيفة) */
+            --color-pronouns: #e3f2fd;    /* أزرق فاتح جداً */
+            --color-pronouns-accent: #2196f3;
+            
+            --color-articles: #e8f5e9;    /* أخضر فاتح جداً */
+            --color-articles-accent: #4caf50;
+            
+            --color-structure: #fff3e0;   /* برتقالي فاتح جداً */
+            --color-structure-accent: #ff9800;
+            
+            --color-note-bg: #ffebee;     /* أحمر فاتح جداً للملاحظة */
+            --color-note-border: #ef9a9a;
+            --color-note-text: #b71c1c;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+        }
+
+        .main-container {
+            background-color: var(--card-bg);
+            width: 100%;
+            max-width: 900px;
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+            border: 1px solid #dbe2e8;
+        }
+
+        /* عنوان الدرس الرئيسي */
+        .lesson-title {
+            text-align: center;
+            color: var(--text-main);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .lesson-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-pronouns-accent), var(--color-articles-accent));
+            border-radius: 2px;
+        }
+
+        /* تنسيق الأقسام الرئيسية */
+        .grammar-section {
+            margin-bottom: 40px;
+            padding: 25px;
+            border-radius: 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        .grammar-section:hover {
+            transform: translateY(-5px);
+        }
+
+        /* تخصيص ألوان كل قسم */
+        .section-pronouns { background-color: var(--color-pronouns); border-right: 6px solid var(--color-pronouns-accent); }
+        .section-articles { background-color: var(--color-articles); border-right: 6px solid var(--color-articles-accent); }
+        .section-structure { background-color: var(--color-structure); border-right: 6px solid var(--color-structure-accent); }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .section-title-ar { font-size: 1.6rem; color: var(--text-main); font-weight: bold; }
+        .section-title-en { font-size: 1.2rem; color: var(--text-sub); direction: ltr; }
+
+        /* تنسيق شبكة الكلمات (الضمائر والأدوات) */
+        .word-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .word-box {
+            background-color: #ffffff;
+            padding: 18px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.3rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+            border: 1px solid #eee;
+        }
+
+        .en-text { font-weight: bold; color: #2c3e50; } /* لون داكن للإنجليزية */
+        .ar-text { color: var(--text-sub); font-size: 1.1rem; }
+
+        /* تنسيق قسم تكوين الجملة */
+        .structure-display {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+            direction: ltr; /* لعرض الهيكل من اليسار لليمين */
+        }
+
+        .structure-part {
+            background-color: #ffffff;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-weight: bold;
+            color: var(--color-structure-accent);
+            border: 2px solid var(--color-structure-accent);
+            font-size: 1.2rem;
+        }
+        
+        .structure-arrow {
+            font-size: 1.5rem;
+            color: var(--text-sub);
+        }
+
+        /* تنسيق قسم الفيديو الجديد */
+        .video-section {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 20px;
+            border: 1px dashed #ccc;
+        }
+
+        .video-container {
+            display: inline-block;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .video-container:hover {
+            transform: scale(1.03);
+        }
+
+        .video-container img {
+            width: 100%;
+            max-width: 480px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .video-caption {
+            margin-top: 10px;
+            font-weight: bold;
+            color: var(--text-main);
+        }
+
+        /* تنسيق الملاحظة النهائية */
+        .note-footer {
+            background-color: var(--color-note-bg);
+            border: 2px solid var(--color-note-border);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .note-en { display: block; color: var(--color-note-text); font-weight: bold; direction: ltr; margin-bottom: 5px; }
+        .note-ar { color: var(--text-main); font-size: 1.1rem; }
+
+    </style>
+</head>
+<body>
+
+<div class="main-container">
+    <h1 class="lesson-title">الأساسيات اللغوية / Language Foundations</h1>
+    
+    <div class="grammar-section section-pronouns">
+        <div class="section-header">
+            <span class="section-title-ar">1. ضمائر الفاعل</span>
+            <span class="section-title-en">Subject Pronouns</span>
+        </div>
+        <div class="word-grid">
+            <div class="word-box"><span class="en-text">I</span><span class="ar-text">(أنا)</span></div>
+            <div class="word-box"><span class="en-text">You</span><span class="ar-text">(أنت/أنتم)</span></div>
+            <div class="word-box"><span class="en-text">He / She / It</span><span class="ar-text">(هو، هي، لغير العاقل)</span></div>
+            <div class="word-box"><span class="en-text">We / They</span><span class="ar-text">(نحن، هم)</span></div>
+        </div>
+    </div>
+
+    <div class="grammar-section section-articles">
+        <div class="section-header">
+            <span class="section-title-ar">2. أدوات النكرة</span>
+            <span class="section-title-en">Indefinite Articles (a / an)</span>
+        </div>
+        <div class="word-grid">
+            <div class="word-box"><span class="en-text">A car</span><span class="ar-text">(سيارة - قبل حرف ساكن)</span></div>
+            <div class="word-box"><span class="en-text">An apple</span><span class="ar-text">(تفاحة - قبل حرف متحرك)</span></div>
+        </div>
+    </div>
+
+    <div class="grammar-section section-structure">
+        <div class="section-header">
+            <span class="section-title-ar">3. هيكل الجملة الأساسية</span>
+            <span class="section-title-en">Basic Sentence Structure</span>
+        </div>
+        <div class="structure-display">
+            <div class="structure-part">Subject</div>
+            <span class="structure-arrow">➔</span>
+            <div class="structure-part">Verb</div>
+            <span class="structure-arrow">➔</span>
+            <div class="structure-part">Object</div>
+        </div>
+        <div style="text-align: center; margin-top: 15px; color: var(--text-sub);">مثال: I (Subject) + eat (Verb) + an apple (Object).</div>
+    </div>
+
+    <div class="video-section">
+        <div class="video-container">
+            <a href="https://youtu.be/Dd91lSm7WFM" target="_blank">
+                <img src="https://img.youtube.com/vi/Dd91lSm7WFM/hqdefault.jpg" alt="مشاهدة الفيديو">
+            </a>
+            <p class="video-caption">🎥 اضغط لمشاهدة الشرح بالفيديو</p>
+        </div>
+    </div>
+
+    <div class="note-footer">
+        <span class="note-en">Note: Remember that the pronoun 'I' is always written as a capital letter.</span>
+        <span class="note-ar">ملاحظة: تذكر أن الضمير I دائماً يكتب حرفاً كبيراً (Capital).</span>
+    </div>
+</div>
+
+</body>
+</html>

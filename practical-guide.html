@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الدليل العملي لتكوين الجملة</title>
+    <style>
+        body {
+            background: linear-gradient(160deg,#1e3c72,#2a5298);
+            margin: 0;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            width: 95%;
+            max-width: 1100px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            background: #ff416c;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .back-link:hover { background: #ff4b2b; transform: scale(1.05); }
+
+        /* تنسيق حاويات الملفات */
+        .file-section {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            padding: 15px;
+            margin-bottom: 40px;
+            border: 2px solid #00ff00;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .file-title {
+            text-align: center;
+            font-size: 1.5rem;
+            color: #FFD700;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px #000;
+        }
+        /* الإطار الذي سيعرض ملفات الـ HTML */
+        iframe {
+            width: 100%;
+            height: 700px; /* يمكنك زيادة الارتفاع حسب طول محتوى ملفاتك */
+            border: none;
+            border-radius: 10px;
+            background: white;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="back-link">⬅ العودة للرئيسية</a>
+
+    <div class="container">
+        <h1 style="text-align: center; color: #00ff00; text-shadow: 0 0 10px #00ff00; margin-bottom: 30px;">الدليل العملي للمبتدئين في تكوين الجملة</h1>
+
+        <div class="file-section">
+            <div class="file-title">الجزء الأول: الأساسيات</div>
+            <iframe src="lesson1.html"></iframe>
+        </div>
+
+        <div class="file-section">
+            <div class="file-title">الجزء الثاني: أدوات النكرة</div>
+            <iframe src="lesson2.html"></iframe>
+        </div>
+
+        <div class="file-section">
+            <div class="file-title">الجزء الثالث: فخ الجمع</div>
+            <iframe src="lesson3.html"></iframe>
+        </div>
+
+        <div class="file-section">
+            <div class="file-title">الجزء الرابع: هيكل الجملة</div>
+            <iframe src="lesson4.html"></iframe>
+        </div>
+
+        <div class="file-section">
+            <div class="file-title">الجزء الخامس: الاختبار النهائي</div>
+            <iframe src="lesson5.html"></iframe>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Learning Challenge</title>
+    <style>
+        :root {
+            --primary-bg: #e3f2fd; 
+            --accent-blue: #0277bd; 
+            --light-blue: #81d4fa; 
+            --text-dark: #1a237e; 
+            --text-light: #546e7a; 
+            --border-color: #bbdefb;
+            --white: #ffffff;
+            --container-radius: 20px;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--primary-bg);
+            background-image: linear-gradient(315deg, #e3f2fd 0%, #b3e5fc 74%); 
+            color: var(--text-dark);
+            display: flex;
+            justify-content: center;
+            padding: 40px;
+            margin: 0;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 10%;
+            left: 5%;
+            width: 150px;
+            height: 150px;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCI+PGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iNDAiIGZpbGw9IiM4MWQ0ZmEiIG9wYWNpdHk9IjAuMiIvPjwvc3ZnPg==');
+            background-size: cover;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        body::after {
+            content: "";
+            position: absolute;
+            bottom: 10%;
+            right: 5%;
+            width: 200px;
+            height: 200px;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCI+PHBvbHlnb24gcG9pbnRzPSI1MCwwIDEwMCwxMDAgMCwxMDAiIGZpbGw9IiM4MWQ0ZmEiIG9wYWNpdHk9IjAuMiIvPjwvc3ZnPg==');
+            background-size: cover;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 850px;
+            background: var(--white);
+            border: 3px solid var(--border-color);
+            border-radius: var(--container-radius);
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(2, 119, 189, 0.2); 
+            transition: transform 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+        }
+
+        .header {
+            text-align: center;
+            border-bottom: 4px solid var(--accent-blue);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .header h1 {
+            color: var(--accent-blue);
+            font-size: 32px;
+            font-weight: 700;
+            margin: 0;
+            display: inline-block;
+        }
+
+        .header h1::after {
+            content: "✨";
+            font-size: 1.2em;
+            margin-left: 10px;
+            color: #ffd600;
+        }
+
+        .instructions {
+            background-color: #e1f5fe;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 8px solid var(--light-blue);
+            margin-bottom: 35px;
+            line-height: 1.8;
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 1.1em;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+
+        .challenge-row {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 2px solid #e0f2f1;
+            border-radius: 15px;
+            background: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .challenge-row:hover {
+            background: #f1f8e9; 
+            box-shadow: 0 5px 15px rgba(139, 195, 74, 0.1);
+        }
+
+        .image-box {
+            flex: 0 0 160px;
+            height: 140px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #e0f2f1;
+            background-color: #f5f5f5; /* Light gray background for the empty box */
+            color: #ccc; /* Pale color for text placeholders */
+            font-style: italic;
+        }
+
+        /* Crucially, we remove the .image-box img {} styles
+           because there are no more img elements inside.
+        */
+
+        .input-area {
+            flex-grow: 1;
+        }
+
+        .hint {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: var(--accent-blue);
+            font-size: 1.1em;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-bottom: 3px solid var(--border-color);
+            border-radius: 8px; 
+            outline: none;
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--text-dark);
+            background-color: #fafafa;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            background-color: #fff;
+            border-bottom-color: var(--accent-blue);
+            box-shadow: 0 5px 15px rgba(2, 119, 189, 0.1);
+        }
+
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 3px dashed var(--light-blue);
+            font-size: 1em;
+            color: var(--text-light);
+            text-align: center;
+            font-style: italic;
+        }
+
+        .footer p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>Section 5: The Challenge</h1>
+    </div>
+
+    <div class="instructions">
+        We have learned the rules, and now it's time for the test! 
+        Let's see your creativity in forming sentences. Look at the empty placeholders and write 
+        a simple and correct English sentence for each challenge.
+    </div>
+
+    <div class="challenge-row">
+        <div class="image-box">Challenge 1</div>
+        <div class="input-area">
+            <span class="hint">Use the verb "drink" + appropriate article</span>
+            <input type="text" placeholder="Write your sentence here...">
+        </div>
+    </div>
+
+    <div class="challenge-row">
+        <div class="image-box">Challenge 2</div>
+        <div class="input-area">
+            <span class="hint">Use the verb "have/own" + appropriate article</span>
+            <input type="text" placeholder="Write your sentence here...">
+        </div>
+    </div>
+
+    <div class="challenge-row">
+        <div class="image-box">Challenge 3</div>
+        <div class="input-area">
+            <span class="hint">Note: We are talking about a group of objects</span>
+            <input type="text" placeholder="Write your sentence here...">
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Don't be afraid of making mistakes, we are here to learn together!</p>
+        <p>🌱 Keep growing!</p>
+    </div>
+</div>
+
+</body>
+</html>
