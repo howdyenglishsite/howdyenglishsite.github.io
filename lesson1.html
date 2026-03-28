@@ -7,22 +7,21 @@
     <style>
         /* تعريف الألوان كمتغيرات لتسهيل التعديل */
         :root {
-            --bg-color: #f0f4f8; /* خلفية الصفحة - رمادي مزرق فاتح جداً */
-            --card-bg: #ffffff;   /* خلفية البطاقة - أبيض ناصع */
-            --text-main: #2c3e50;  /* لون النص الأساسي - أزرق داكن */
-            --text-sub: #576574;   /* لون النص الفرعي - رمادي */
+            --bg-color: #f0f4f8; 
+            --card-bg: #ffffff;  
+            --text-main: #2c3e50;  
+            --text-sub: #576574;   
             
-            /* ألوان الأقسام (هادئة وخفيفة) */
-            --color-pronouns: #e3f2fd;    /* أزرق فاتح جداً */
+            --color-pronouns: #e3f2fd;    
             --color-pronouns-accent: #2196f3;
             
-            --color-articles: #e8f5e9;    /* أخضر فاتح جداً */
+            --color-articles: #e8f5e9;    
             --color-articles-accent: #4caf50;
             
-            --color-structure: #fff3e0;   /* برتقالي فاتح جداً */
+            --color-structure: #fff3e0;   
             --color-structure-accent: #ff9800;
             
-            --color-note-bg: #ffebee;     /* أحمر فاتح جداً للملاحظة */
+            --color-note-bg: #ffebee;     
             --color-note-border: #ef9a9a;
             --color-note-text: #b71c1c;
         }
@@ -36,6 +35,9 @@
             margin: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             padding: 20px;
+            /* إضافة ميزة مرونة النصوص */
+            font-size: 18px; 
+            line-height: 1.6;
         }
 
         .main-container {
@@ -48,7 +50,20 @@
             border: 1px solid #dbe2e8;
         }
 
-        /* عنوان الدرس الرئيسي */
+        /* --- ميزة التجاوب مع الجوال (المضافة) --- */
+        @media screen and (max-width: 767px) {
+            body { padding: 10px; font-size: 16px; }
+            .main-container { padding: 20px; border-radius: 15px; }
+            .lesson-title { font-size: 1.6rem !important; }
+            .section-title-ar { font-size: 1.2rem !important; }
+            .section-title-en { font-size: 1rem !important; }
+            .word-grid { grid-template-columns: 1fr; } /* جعل الكلمات تحت بعضها في الجوال */
+            .word-box { font-size: 1.1rem; padding: 12px; }
+            .structure-display { flex-direction: column; gap: 10px; } /* جعل هيكل الجملة طولي في الجوال */
+            .structure-arrow { transform: rotate(90deg); } /* تغيير اتجاه السهم للأسفل */
+            .video-container img { max-width: 100%; }
+        }
+
         .lesson-title {
             text-align: center;
             color: var(--text-main);
@@ -70,19 +85,13 @@
             border-radius: 2px;
         }
 
-        /* تنسيق الأقسام الرئيسية */
         .grammar-section {
             margin-bottom: 40px;
             padding: 25px;
             border-radius: 20px;
             transition: transform 0.3s ease;
         }
-        
-        .grammar-section:hover {
-            transform: translateY(-5px);
-        }
 
-        /* تخصيص ألوان كل قسم */
         .section-pronouns { background-color: var(--color-pronouns); border-right: 6px solid var(--color-pronouns-accent); }
         .section-articles { background-color: var(--color-articles); border-right: 6px solid var(--color-articles-accent); }
         .section-structure { background-color: var(--color-structure); border-right: 6px solid var(--color-structure-accent); }
@@ -99,7 +108,6 @@
         .section-title-ar { font-size: 1.6rem; color: var(--text-main); font-weight: bold; }
         .section-title-en { font-size: 1.2rem; color: var(--text-sub); direction: ltr; }
 
-        /* تنسيق شبكة الكلمات (الضمائر والأدوات) */
         .word-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -114,22 +122,20 @@
             justify-content: center;
             align-items: center;
             gap: 12px;
-            font-size: 1.3rem;
             box-shadow: 0 2px 5px rgba(0,0,0,0.03);
             border: 1px solid #eee;
         }
 
-        .en-text { font-weight: bold; color: #2c3e50; } /* لون داكن للإنجليزية */
-        .ar-text { color: var(--text-sub); font-size: 1.1rem; }
+        .en-text { font-weight: bold; color: #2c3e50; } 
+        .ar-text { color: var(--text-sub); }
 
-        /* تنسيق قسم تكوين الجملة */
         .structure-display {
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 15px;
             margin-top: 20px;
-            direction: ltr; /* لعرض الهيكل من اليسار لليمين */
+            direction: ltr; 
         }
 
         .structure-part {
@@ -147,7 +153,6 @@
             color: var(--text-sub);
         }
 
-        /* تنسيق قسم الفيديو الجديد */
         .video-section {
             text-align: center;
             margin-top: 30px;
@@ -163,9 +168,7 @@
             transition: transform 0.3s ease;
         }
 
-        .video-container:hover {
-            transform: scale(1.03);
-        }
+        .video-container:hover { transform: scale(1.03); }
 
         .video-container img {
             width: 100%;
@@ -180,7 +183,6 @@
             color: var(--text-main);
         }
 
-        /* تنسيق الملاحظة النهائية */
         .note-footer {
             background-color: var(--color-note-bg);
             border: 2px solid var(--color-note-border);
@@ -236,7 +238,7 @@
             <span class="structure-arrow">➔</span>
             <div class="structure-part">Object</div>
         </div>
-        <div style="text-align: center; margin-top: 15px; color: var(--text-sub);">مثال: I (Subject) + eat (Verb) + an apple (Object).</div>
+        <div style="text-align: center; margin-top: 15px; color: var(--text-sub);">مثال: I eat an apple.</div>
     </div>
 
     <div class="video-section">
