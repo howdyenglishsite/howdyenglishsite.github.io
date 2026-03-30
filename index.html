@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<!-- ميزة التجاوب التلقائي الأساسية لشاشات الجوال -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- منع التخزين المؤقت لضمان تحديث التعديلات -->
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -22,22 +22,15 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2200363624984381" crossorigin="anonymous"></script>
 
 <!-- Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
 
 <style>
-/* --- نظام التجاوب التلقائي (Responsive System) --- */
-html { 
-  font-size: 100%; /* حجم أساسي مرن */
-  scroll-behavior: smooth; 
-}
-
-@media screen and (min-width: 768px) {
-  html { font-size: 130%; } /* تكبير الخط للشاشات الكبيرة */
-}
+/* --- التجاوب التلقائي للخطوط والأبعاد --- */
+html { font-size: 16px; scroll-behavior: smooth; }
+@media (min-width: 768px) { html { font-size: 20px; } }
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  direction: rtl;
   margin: 0;
   min-height: 100vh;
   display: flex;
@@ -49,9 +42,9 @@ body {
   padding-bottom: 5rem;
 }
 
-/* --- العنوان الحيوي المتجاوب --- */
+/* --- العنوان الحيوي (المتجاوب) --- */
 .live-title {
-  font-size: 1.8rem; /* حجم أصغر للجوال */
+  font-size: 1.8rem;
   font-weight: bold;
   text-align: center;
   margin: 1.5rem 0;
@@ -59,170 +52,103 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-size: 300% 100%;
-  animation: greenWave 5s linear infinite, floatWave 3s ease-in-out infinite;
-  text-shadow: 0 0 15px rgba(0,255,0,0.5);
-  display: inline-block;
-  padding: 0 10px;
+  animation: greenWave 5s linear infinite;
+  text-shadow: 0 0 15px rgba(0,255,0,0.3);
 }
-
-@media screen and (min-width: 768px) {
-  .live-title { font-size: 3rem; }
-}
+@media (min-width: 768px) { .live-title { font-size: 3rem; } }
 
 @keyframes greenWave { 0%{background-position:0% 50%;} 50%{background-position:100% 50%;} 100%{background-position:0% 50%;} }
-@keyframes floatWave { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-5px);} }
 
 /* --- الغلاف المتجاوب --- */
 .cover {
   position: relative;
-  width: 92%;
+  width: 95%;
   max-width: 820px;
   height: auto;
-  aspect-ratio: 16 / 7; /* يحافظ على التناسب في كل الشاشات */
+  aspect-ratio: 16/7;
   margin: 1rem auto;
   overflow: hidden;
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 }
-
 .cover img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(90%) saturate(125%);
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.5s ease;
 }
-
-.cover::after {
-  content: "";
-  position: absolute;
-  top: -50%; left: -50%;
-  width: 200%; height: 200%;
-  background: linear-gradient(120deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 100%);
-  animation: shine 4s linear infinite;
-  pointer-events: none;
-}
-@keyframes shine { 0%{transform:translateX(-100%) translateY(-100%);} 100%{transform:translateX(100%) translateY(100%);} }
+.cover:hover img { transform: scale(1.05); }
 
 /* --- الأكورديون والأزرار --- */
 .accordion, .level-complete {
-  width: 92%;
-  max-width: 1100px;
-  padding: 14px 20px;
-  margin: 10px auto;
-  cursor: pointer;
-  text-align: right;
-  font-size: 1.1rem;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.4);
-  position: relative;
-  transition: all 0.3s ease;
-  color: white;
+  width: 95%; max-width: 1100px;
+  padding: 14px 20px; margin: 10px auto;
+  cursor: pointer; text-align: right;
+  border: none; border-radius: 15px;
+  transition: 0.3s ease; color: white;
+  display: block;
 }
-
-.accordion { background: linear-gradient(135deg,#6a11cb,#2575fc); }
-.level-complete { background: linear-gradient(135deg,#00c9ff,#92fe9d); font-weight: bold; text-align: center; }
-
-.accordion::after {
-  content: "▶";
-  font-size: 14px;
-  position: absolute;
-  left: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  transition: transform 0.3s;
+.level-complete {
+  background: linear-gradient(135deg,#00c9ff,#92fe9d);
+  font-weight: bold; text-align: center; font-size: 1.2rem;
 }
+.accordion { background: linear-gradient(135deg,#6a11cb,#2575fc); font-size: 1.1rem; position: relative; }
+.accordion::after { content: "▶"; position: absolute; left: 20px; transition: 0.3s; }
+.accordion.active::after { transform: rotate(90deg); }
 
-.accordion.active::after { transform: translateY(-50%) rotate(90deg); }
-.accordion:hover { transform: translateY(-2px); background: linear-gradient(135deg,#ff416c,#ff4b2b); }
-
-/* --- اللوحات الداخلية --- */
+/* --- لوحات الأكورديون --- */
 .panel {
-  display: none;
-  width: 92%;
-  max-width: 1100px;
-  margin: 0 auto 10px auto;
-  padding: 1rem;
-  background: rgba(0,0,0,0.7);
-  border-radius: 15px;
-  backdrop-filter: blur(5px);
-  box-sizing: border-box;
+  display: none; width: 95%; max-width: 1100px;
+  margin: 0 auto 10px; padding: 1rem;
+  background: rgba(0,0,0,0.7); border-radius: 15px;
+  backdrop-filter: blur(5px); box-sizing: border-box;
 }
 
-.panel .accordion {
-  background: linear-gradient(135deg,#11998e,#38ef7d);
-  font-size: 1rem;
-  width: 100%;
-}
-
-/* --- أنابيب جانبية زجاجية (أرجوانية) --- */
+/* --- أنابيب جانبية --- */
 #bubble-container-left, #bubble-container-right {
-  position: fixed;
-  top: 0;
-  width: 2rem;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
+  position: fixed; top: 0; width: 2.5rem; height: 100%; pointer-events: none; z-index: 1;
 }
-#bubble-container-left { left: 0; }
-#bubble-container-right { right: 0; }
-
+#bubble-container-left { left: 0; } #bubble-container-right { right: 0; }
 .bubble-tube {
-  position: absolute;
-  bottom: 0;
-  border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, rgba(200,160,255,0.7), rgba(138,43,226,0.4));
+  position: absolute; bottom: 0; border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(200,160,255,0.6), rgba(138,43,226,0.3));
   animation: rise 10s linear infinite;
 }
+@keyframes rise { 0%{transform:translateY(0); opacity:0.7;} 100%{transform:translateY(-110vh); opacity:0;} }
 
-@keyframes rise {
-  0% { transform: translateY(0) scale(1); opacity: 0.7; }
-  100% { transform: translateY(-110vh) scale(1.2); opacity: 0; }
-}
-
-/* --- شريط التواصل الاجتماعي المتجاوب والمتوهج --- */
+/* --- سبورة التواصل (تحسين التجاوب) --- */
 .social-bar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: #FFD700;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0.6rem 0;
-  gap: 0.5rem;
-  box-shadow: 0 -3px 10px rgba(0,0,0,0.3);
-  z-index: 1000;
+  position: fixed; bottom: 0; left: 0; width: 100%;
+  background: #FFD700; display: flex; justify-content: center;
+  align-items: center; padding: 0.5rem 0; gap: 0.5rem;
+  box-shadow: 0 -3px 10px rgba(0,0,0,0.3); z-index: 1000;
 }
-
 .social-bar a {
-  color: #000;
-  text-decoration: none;
-  font-size: 0.75rem;
-  font-weight: bold;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 3px;
-  padding: 5px 8px;
-  border-radius: 10px;
-  transition: all 0.3s ease;
+  color: #000; font-size: 0.7rem; font-weight: bold;
+  display: flex; flex-direction: column; align-items: center;
+  padding: 5px; border-radius: 8px; transition: 0.3s;
+}
+@media (min-width: 600px) {
+  .social-bar { gap: 1.5rem; }
+  .social-bar a { font-size: 1rem; flex-direction: row; gap: 8px; }
 }
 
-@media screen and (min-width: 600px) {
-  .social-bar { gap: 2rem; }
-  .social-bar a { font-size: 1.1rem; flex-direction: row; gap: 8px; }
+/* تأثير التوهج التلقائي */
+.social-bar a.auto-hover.youtube { background: #ff0000; color: #fff !important; }
+.social-bar a.auto-hover.facebook { background: #1877f2; color: #fff !important; }
+.social-bar a.auto-hover.tiktok { background: #000; color: #fff !important; }
+.social-bar a.auto-hover.instagram { background: linear-gradient(45deg,#833ab4,#fd1d1d,#fcb045); color: #fff !important; }
+
+/* --- أزرار الفوتر (من نحن - الخصوصية - اتصل بنا) --- */
+.footer-links {
+  margin: 2rem 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; width: 95%;
 }
-
-/* تأثير التوهج التلقائي المبرمج */
-.social-bar a.auto-hover.youtube { background: #ff0000; color: #fff !important; box-shadow: 0 0 15px #ff0000; }
-.social-bar a.auto-hover.facebook { background: #1877f2; color: #fff !important; box-shadow: 0 0 15px #1877f2; }
-.social-bar a.auto-hover.tiktok { background: #000; color: #fff !important; box-shadow: 0 0 15px #000; }
-.social-bar a.auto-hover.instagram { background: linear-gradient(45deg,#833ab4,#fd1d1d,#fcb045); color: #fff !important; box-shadow: 0 0 15px #fd1d1d; }
-
-.footer-links { text-align: center; margin: 2rem 0; width: 100%; }
-.footer-links a { margin: 0 10px; color: #fff; text-decoration: none; font-size: 0.9rem; background: rgba(255,255,255,0.1); padding: 5px 12px; border-radius: 8px; }
+.footer-links a {
+  padding: 10px 20px; border-radius: 50px;
+  background: rgba(255, 255, 255, 0.15);
+  color: white; font-size: 0.85rem;
+  border: 1px solid rgba(255,255,255,0.3);
+  transition: 0.3s;
+}
+.footer-links a:hover { background: #38ef7d; transform: translateY(-3px); }
 
 </style>
 </head>
@@ -241,42 +167,35 @@ body {
 
 <button class="accordion">الأساسيات</button>
 <div class="panel">
-  <a href="basic-words.html" style="text-decoration: none;">
-    <button class="accordion" style="text-align:center;">المفردات</button>
-  </a>
-  <a href="greetings.html" style="text-decoration: none;">
-    <button class="accordion" style="text-align:center;">التحيات</button>
-  </a>
-  <a href="practical-guide.html" style="text-decoration: none;">
-    <button class="accordion" style="text-align:center; background: linear-gradient(135deg,#6a11cb,#2575fc); border: 2px solid #00ff00;">
-      📘 الدليل العملي للمبتدئين في تكوين الجملة
+  <a href="basic-words.html" style="text-decoration:none;"><button class="accordion" style="background:#11998e">المفردات</button></a>
+  <a href="greetings.html" style="text-decoration:none;"><button class="accordion" style="background:#11998e">التحيات</button></a>
+  <a href="practical-guide.html" style="text-decoration:none;">
+    <button class="accordion" style="background:linear-gradient(135deg,#6a11cb,#2575fc); border: 2px solid #00ff00;">
+      📘 الدليل العملي لتكوين الجملة
     </button>
   </a>
 </div>
 
+<!-- إعلان Google -->
+<ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-2200363624984381" data-ad-slot="2136925048"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+<!-- أزرار الفوتر القانونية المنسقة -->
 <div class="footer-links">
-  <a href="about.html">من نحن</a>
-  <a href="privacy.html">الخصوصية</a>
-  <a href="contact.html">اتصل بنا</a>
+  <a href="about.html"><i class="fas fa-info-circle"></i> من نحن</a>
+  <a href="privacy.html"><i class="fas fa-shield-alt"></i> سياسة الخصوصية</a>
+  <a href="contact.html"><i class="fas fa-envelope"></i> اتصل بنا</a>
 </div>
 
 <div class="social-bar">
-  <a href="https://www.youtube.com/channel/UCFSquuv3GpfUA5RsB3esIfw" target="_blank" class="youtube">
-    <i class="fab fa-youtube"></i> <span>يوتيوب</span>
-  </a>
-  <a href="https://www.facebook.com/profile.php?id=61588006462049" target="_blank" class="facebook">
-    <i class="fab fa-facebook"></i> <span>فايسبوك</span>
-  </a>
-  <a href="https://www.tiktok.com/@howdy5english" target="_blank" class="tiktok">
-    <i class="fab fa-tiktok"></i> <span>تيك توك</span>
-  </a>
-  <a href="https://www.instagram.com/howdy5english/" target="_blank" class="instagram">
-    <i class="fab fa-instagram"></i> <span>انستغرام</span>
-  </a>
+  <a href="https://www.youtube.com/channel/UCFSquuv3GpfUA5RsB3esIfw" target="_blank" class="youtube"><i class="fab fa-youtube"></i> <span>يوتيوب</span></a>
+  <a href="https://www.facebook.com/profile.php?id=61588006462049" target="_blank" class="facebook"><i class="fab fa-facebook"></i> <span>فايسبوك</span></a>
+  <a href="https://www.tiktok.com/@howdy5english" target="_blank" class="tiktok"><i class="fab fa-tiktok"></i> <span>تيك توك</span></a>
+  <a href="https://www.instagram.com/howdy5english/" target="_blank" class="instagram"><i class="fab fa-instagram"></i> <span>انستغرام</span></a>
 </div>
 
 <script>
-// --- الأكورديون المتجاوب ---
+// تفعيل الأكورديون
 var acc = document.getElementsByClassName("accordion");
 for (var i = 0; i < acc.length; i++) {
   acc[i].addEventListener("click", function() {
@@ -288,30 +207,28 @@ for (var i = 0; i < acc.length; i++) {
   });
 }
 
-// --- نظام الفقاعات المتجاوب ---
-function createBubble(container) {
-  const bubble = document.createElement('div');
-  bubble.classList.add('bubble-tube');
-  const size = Math.random() * 15 + 10;
-  bubble.style.width = size + 'px';
-  bubble.style.height = size + 'px';
-  bubble.style.left = Math.random() * 100 + '%';
-  bubble.style.animationDuration = (Math.random() * 5 + 5) + 's';
-  container.appendChild(bubble);
-  setTimeout(() => bubble.remove(), 10000);
+// توليد الفقاعات
+function createB(c){
+  const b=document.createElement('div');
+  b.classList.add('bubble-tube');
+  const s=Math.random()*15+10;
+  b.style.width=s+'px'; b.style.height=s+'px';
+  b.style.left=Math.random()*100+'%';
+  b.style.animationDuration=(Math.random()*5+5)+'s';
+  c.appendChild(b);
+  setTimeout(()=>b.remove(),10000);
 }
-setInterval(() => createBubble(document.getElementById('bubble-container-left')), 600);
-setInterval(() => createBubble(document.getElementById('bubble-container-right')), 600);
+setInterval(()=>createB(document.getElementById('bubble-container-left')), 600);
+setInterval(()=>createB(document.getElementById('bubble-container-right')), 600);
 
-// --- التوهج التلقائي الذكي لشريط التواصل ---
-const socialLinks = document.querySelectorAll(".social-bar a");
-let socialIdx = 0;
-function autoGlow() {
-  socialLinks.forEach(l => l.classList.remove("auto-hover"));
-  socialLinks[socialIdx].classList.add("auto-hover");
-  socialIdx = (socialIdx + 1) % socialLinks.length;
-}
-setInterval(autoGlow, 2000);
+// التوهج التلقائي للأيقونات
+const links = document.querySelectorAll(".social-bar a");
+let idx = 0;
+setInterval(() => {
+  links.forEach(l => l.classList.remove("auto-hover"));
+  links[idx].classList.add("auto-hover");
+  idx = (idx + 1) % links.length;
+}, 2000);
 </script>
 
 </body>
