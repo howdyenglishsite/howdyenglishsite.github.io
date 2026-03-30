@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>الدليل العملي لتكوين الجملة</title>
+    
+    <!-- رابط مكتبة الأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         /* التنسيق العام للجسم */
         body {
@@ -59,7 +63,6 @@
             text-shadow: 2px 2px 4px #000;
         }
 
-        /* تنسيق الإطارات (Iframes) */
         iframe {
             width: 100%;
             height: 700px; 
@@ -68,13 +71,53 @@
             background: white;
         }
 
+        /* ===== شريط التواصل الاجتماعي الذهبي المطور ===== */
+        .social-bar {
+            position: fixed;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            padding: 1.2rem;
+            gap: 1.5rem;
+            border-radius: 0 30px 30px 0;
+            z-index: 9999;
+            background: linear-gradient(135deg, #FFD700, #FFB900);
+            box-shadow: 5px 0 25px rgba(255, 215, 0, 0.4);
+            transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .social-bar i {
+            font-size: 1.8rem;
+            width: 55px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%; 
+            color: white;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+            transition: all 0.4s ease;
+        }
+
+        .youtube-icon { background: linear-gradient(135deg, #FF0000, #B20000); }
+        .facebook-icon { background: linear-gradient(135deg, #1877F2, #0A52B1); }
+        .tiktok-icon { background: linear-gradient(135deg, #000000, #333333); border: 1px solid rgba(255,255,255,0.2); }
+        .instagram-icon { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
+
         /* ميزة التجاوب للهواتف */
         @media screen and (max-width: 767px) {
-            body { padding: 10px; }
+            body { padding: 10px; padding-bottom: 90px; } /* ترك مساحة للشريط السفلي */
             .container { width: 100%; }
-            iframe { height: 500px; } /* تقليل الطول في الهاتف لسهولة التصفح */
-            .file-title { font-size: 1.2rem; }
-            h1 { font-size: 1.4rem !important; }
+            iframe { height: 500px; }
+            .social-bar {
+                top: auto; bottom: 0; left: 0; right: 0;
+                width: 100%; height: 70px; flex-direction: row; 
+                transform: none; padding: 0; justify-content: space-evenly;
+                border-radius: 25px 25px 0 0;
+            }
+            .social-bar i { width: 45px; height: 45px; font-size: 1.4rem; }
         }
     </style>
 </head>
@@ -110,6 +153,40 @@
             <iframe src="lesson5.html"></iframe>
         </div>
     </div>
+
+    <!-- شريط التواصل الاجتماعي -->
+    <div class="social-bar">
+      <a href="https://www.youtube.com/channel/UCFSquuv3GpfUA5RsB3esIfw" target="_blank" title="يوتيوب">
+          <i class="fab fa-youtube youtube-icon"></i>
+      </a>
+      <a href="https://www.facebook.com/profile.php?id=61588006462049" target="_blank" title="فيسبوك">
+          <i class="fab fa-facebook-f facebook-icon"></i>
+      </a>
+      <a href="https://www.tiktok.com/@howdy5english" target="_blank" title="تيك توك">
+          <i class="fab fa-tiktok tiktok-icon"></i>
+      </a>
+      <a href="https://www.instagram.com/howdy5english/" target="_blank" title="انستغرام">
+          <i class="fab fa-instagram instagram-icon"></i>
+      </a>
+    </div>
+
+    <script>
+    const icons = document.querySelectorAll('.social-bar i');
+    let currentIndex = 0;
+
+    setInterval(() => {
+        icons.forEach(i => {
+            i.style.transform = "scale(1)";
+            i.style.boxShadow = "0 8px 15px rgba(0,0,0,0.3)";
+        });
+
+        const activeIcon = icons[currentIndex];
+        activeIcon.style.transform = "scale(1.2) translateY(-5px) rotate(8deg)";
+        activeIcon.style.boxShadow = "0 0 20px rgba(255, 255, 255, 0.5), 0 0 40px currentColor";
+
+        currentIndex = (currentIndex + 1) % icons.length;
+    }, 2500);
+    </script>
 
 </body>
 </html>
