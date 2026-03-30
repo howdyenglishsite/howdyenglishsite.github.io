@@ -2,7 +2,7 @@
 <html lang="ar">
 <head>
 <meta charset="UTF-8">
-<!-- تفعيل التجاوب الذكي -->
+<!-- ميزة التجاوب التلقائي الأساسية لشاشات الجوال -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
@@ -21,131 +21,208 @@
 <!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2200363624984381" crossorigin="anonymous"></script>
 
+<!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <style>
-/* --- الإعدادات العامة المتجاوبة --- */
-html{ font-size:110%; scroll-behavior:smooth; }
-@media (min-width: 768px) { html { font-size: 130%; } }
-
-body{
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  direction:rtl;
-  margin:0;
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  background:linear-gradient(160deg,#1e3c72,#2a5298);
-  color:#f0f8ff;
-  align-items:center;
-  overflow-x:hidden;
-  padding-bottom:5rem; /* مساحة لشريط التواصل */
+/* --- نظام التجاوب التلقائي (Responsive System) --- */
+html { 
+  font-size: 100%; /* حجم أساسي مرن */
+  scroll-behavior: smooth; 
 }
 
-/* --- العنوان الحيوي --- */
-.live-title{
-  font-size:2rem; /* أصغر للجوال */
-  font-weight:bold;
-  text-align:center;
-  margin:1.5rem 0;
-  background:linear-gradient(90deg,#00ff00,#00ffff,#00ff00);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  background-size:300% 100%;
-  animation:greenWave 5s linear infinite,floatWave 3s ease-in-out infinite;
-  text-shadow:0 0 15px #00ff00;
-  display:inline-block;
+@media screen and (min-width: 768px) {
+  html { font-size: 130%; } /* تكبير الخط للشاشات الكبيرة */
 }
-@media (min-width: 768px) { .live-title { font-size: 3rem; } }
 
-@keyframes greenWave{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
-@keyframes floatWave{0%,100%{transform:translateY(0);}50%{transform:translateY(-5px);}}
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  direction: rtl;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(160deg,#1e3c72,#2a5298);
+  color: #f0f8ff;
+  align-items: center;
+  overflow-x: hidden;
+  padding-bottom: 5rem;
+}
+
+/* --- العنوان الحيوي المتجاوب --- */
+.live-title {
+  font-size: 1.8rem; /* حجم أصغر للجوال */
+  font-weight: bold;
+  text-align: center;
+  margin: 1.5rem 0;
+  background: linear-gradient(90deg,#00ff00,#00ffff,#00ff00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 300% 100%;
+  animation: greenWave 5s linear infinite, floatWave 3s ease-in-out infinite;
+  text-shadow: 0 0 15px rgba(0,255,0,0.5);
+  display: inline-block;
+  padding: 0 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .live-title { font-size: 3rem; }
+}
+
+@keyframes greenWave { 0%{background-position:0% 50%;} 50%{background-position:100% 50%;} 100%{background-position:0% 50%;} }
+@keyframes floatWave { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-5px);} }
 
 /* --- الغلاف المتجاوب --- */
-.cover{
-  position:relative;
-  width:95%;
-  max-width:820px;
+.cover {
+  position: relative;
+  width: 92%;
+  max-width: 820px;
   height: auto;
-  aspect-ratio: 16/7;
-  margin:1rem auto;
-  overflow:hidden;
-  border-radius:15px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.4);
-}
-.cover img{ width:100%; height:100%; object-fit:cover; filter:brightness(90%) saturate(125%); }
-
-/* --- الأكورديون --- */
-.accordion{
-  width:95%;
-  max-width:1200px;
-  padding:14px 20px;
-  margin:10px auto;
-  cursor:pointer;
-  text-align:right;
-  font-size:1.1rem;
-  border:none;
-  border-radius:15px;
-  box-shadow:0 4px 6px rgba(0,0,0,0.4);
-  position:relative;
-  transition:all 0.3s ease;
-  background:linear-gradient(135deg,#6a11cb,#2575fc);
-  color:white;
-}
-.accordion::after{
-  content:"▶"; font-size:16px; position:absolute; left:20px; top:50%;
-  transform:translateY(-50%) rotate(0deg); transition:transform 0.3s ease;
-}
-.accordion.active::after{transform:translateY(-50%) rotate(90deg);}
-.accordion:hover{ transform:translateY(-3px); background:linear-gradient(135deg,#ff416c,#ff4b2b); }
-
-/* --- لوحات الأكورديون --- */
-.panel{display:none;width:95%;max-width:1200px;margin:0 auto 1rem auto;padding:1rem;background:#000000bb;border-radius:15px;backdrop-filter:blur(4px); box-sizing: border-box;}
-.panel .accordion{background:linear-gradient(135deg,#11998e,#38ef7d); margin-top:10px; font-size:1rem; width:100%;}
-
-/* --- زر تختيم A1-A2 --- */
-.level-complete{
-  width:95%; max-width:1200px; margin:20px auto; padding:16px;
-  font-size:1.2rem; font-weight:bold; text-align:center; border:none;
-  border-radius:18px; color:white; cursor:pointer;
-  background:linear-gradient(135deg,#00c9ff,#92fe9d);
-  box-shadow:0 6px 12px rgba(0,0,0,0.4); transition:0.3s;
+  aspect-ratio: 16 / 7; /* يحافظ على التناسب في كل الشاشات */
+  margin: 1rem auto;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 }
 
-/* --- أنابيب جانبية --- */
-#bubble-container-left,#bubble-container-right{position:fixed;top:0;width:2.5rem;height:100%;pointer-events:none;z-index:1;}
-#bubble-container-left{left:0;} #bubble-container-right{right:0;}
-.bubble-tube{
-  position:absolute; bottom:0; border-radius:50%;
-  background:radial-gradient(circle at 30% 30%, rgba(200,160,255,0.8), rgba(138,43,226,0.5));
-  animation:rise 10s linear infinite;
-}
-@keyframes rise{0%{transform:translateY(0);opacity:0.8;}100%{transform:translateY(-110vh);opacity:0;}}
-
-/* --- سبورة التواصل الاجتماعي (تعديل التجاوب) --- */
-.social-bar{
-  position:fixed; bottom:0; left:0; width:100%; background:#FFD700; 
-  display:flex; justify-content:center; align-items:center;
-  padding:0.6rem 0; gap:0.5rem; box-shadow:0 -3px 10px rgba(0,0,0,0.3); z-index:999;
-}
-.social-bar a{
-  color:#000; font-size:0.75rem; font-weight:bold;
-  display:flex; flex-direction:column; align-items:center; gap:2px;
-  padding:5px 8px; border-radius:10px; transition:0.3s;
-}
-@media (min-width: 600px) {
-  .social-bar { gap: 2rem; padding: 0.8rem 0; }
-  .social-bar a { font-size: 1.1rem; flex-direction: row; gap: 0.4rem; }
+.cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(90%) saturate(125%);
 }
 
-/* التوهج التلقائي للأزرار */
-.social-bar a.auto-hover.youtube{background:#ff0000; color:#fff !important; box-shadow:0 0 15px #ff0000;}
-.social-bar a.auto-hover.facebook{background:#1877f2; color:#fff !important; box-shadow:0 0 15px #1877f2;}
-.social-bar a.auto-hover.tiktok{background:#000; color:#fff !important; box-shadow:0 0 15px #000;}
-.social-bar a.auto-hover.instagram{background:linear-gradient(45deg,#833ab4,#fd1d1d,#fcb045); color:#fff !important; box-shadow:0 0 15px #fd1d1d;}
+.cover::after {
+  content: "";
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: linear-gradient(120deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 100%);
+  animation: shine 4s linear infinite;
+  pointer-events: none;
+}
+@keyframes shine { 0%{transform:translateX(-100%) translateY(-100%);} 100%{transform:translateX(100%) translateY(100%);} }
 
-.footer-links{ text-align:center; margin:2rem 0; width:100%; }
-.footer-links a{ margin:0 10px; color:#fff; font-size:0.9rem; background:rgba(255,255,255,0.1); padding:8px 12px; border-radius:8px; }
+/* --- الأكورديون والأزرار --- */
+.accordion, .level-complete {
+  width: 92%;
+  max-width: 1100px;
+  padding: 14px 20px;
+  margin: 10px auto;
+  cursor: pointer;
+  text-align: right;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.4);
+  position: relative;
+  transition: all 0.3s ease;
+  color: white;
+}
+
+.accordion { background: linear-gradient(135deg,#6a11cb,#2575fc); }
+.level-complete { background: linear-gradient(135deg,#00c9ff,#92fe9d); font-weight: bold; text-align: center; }
+
+.accordion::after {
+  content: "▶";
+  font-size: 14px;
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.3s;
+}
+
+.accordion.active::after { transform: translateY(-50%) rotate(90deg); }
+.accordion:hover { transform: translateY(-2px); background: linear-gradient(135deg,#ff416c,#ff4b2b); }
+
+/* --- اللوحات الداخلية --- */
+.panel {
+  display: none;
+  width: 92%;
+  max-width: 1100px;
+  margin: 0 auto 10px auto;
+  padding: 1rem;
+  background: rgba(0,0,0,0.7);
+  border-radius: 15px;
+  backdrop-filter: blur(5px);
+  box-sizing: border-box;
+}
+
+.panel .accordion {
+  background: linear-gradient(135deg,#11998e,#38ef7d);
+  font-size: 1rem;
+  width: 100%;
+}
+
+/* --- أنابيب جانبية زجاجية (أرجوانية) --- */
+#bubble-container-left, #bubble-container-right {
+  position: fixed;
+  top: 0;
+  width: 2rem;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+#bubble-container-left { left: 0; }
+#bubble-container-right { right: 0; }
+
+.bubble-tube {
+  position: absolute;
+  bottom: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(200,160,255,0.7), rgba(138,43,226,0.4));
+  animation: rise 10s linear infinite;
+}
+
+@keyframes rise {
+  0% { transform: translateY(0) scale(1); opacity: 0.7; }
+  100% { transform: translateY(-110vh) scale(1.2); opacity: 0; }
+}
+
+/* --- شريط التواصل الاجتماعي المتجاوب والمتوهج --- */
+.social-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #FFD700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.6rem 0;
+  gap: 0.5rem;
+  box-shadow: 0 -3px 10px rgba(0,0,0,0.3);
+  z-index: 1000;
+}
+
+.social-bar a {
+  color: #000;
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 5px 8px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+@media screen and (min-width: 600px) {
+  .social-bar { gap: 2rem; }
+  .social-bar a { font-size: 1.1rem; flex-direction: row; gap: 8px; }
+}
+
+/* تأثير التوهج التلقائي المبرمج */
+.social-bar a.auto-hover.youtube { background: #ff0000; color: #fff !important; box-shadow: 0 0 15px #ff0000; }
+.social-bar a.auto-hover.facebook { background: #1877f2; color: #fff !important; box-shadow: 0 0 15px #1877f2; }
+.social-bar a.auto-hover.tiktok { background: #000; color: #fff !important; box-shadow: 0 0 15px #000; }
+.social-bar a.auto-hover.instagram { background: linear-gradient(45deg,#833ab4,#fd1d1d,#fcb045); color: #fff !important; box-shadow: 0 0 15px #fd1d1d; }
+
+.footer-links { text-align: center; margin: 2rem 0; width: 100%; }
+.footer-links a { margin: 0 10px; color: #fff; text-decoration: none; font-size: 0.9rem; background: rgba(255,255,255,0.1); padding: 5px 12px; border-radius: 8px; }
 
 </style>
 </head>
@@ -164,29 +241,22 @@ body{
 
 <button class="accordion">الأساسيات</button>
 <div class="panel">
-  <a href="basic-words.html"><button class="accordion">المفردات</button></a>
-  <a href="greetings.html"><button class="accordion">التحيات</button></a>
-  
-  <!-- الزر الجديد المطلوب -->
-  <a href="practical-guide.html">
-    <button class="accordion" style="background:linear-gradient(135deg,#6a11cb,#2575fc); border: 2px solid #00ff00;">
+  <a href="basic-words.html" style="text-decoration: none;">
+    <button class="accordion" style="text-align:center;">المفردات</button>
+  </a>
+  <a href="greetings.html" style="text-decoration: none;">
+    <button class="accordion" style="text-align:center;">التحيات</button>
+  </a>
+  <a href="practical-guide.html" style="text-decoration: none;">
+    <button class="accordion" style="text-align:center; background: linear-gradient(135deg,#6a11cb,#2575fc); border: 2px solid #00ff00;">
       📘 الدليل العملي للمبتدئين في تكوين الجملة
     </button>
   </a>
 </div>
 
-<!-- إعلان Google -->
-<ins class="adsbygoogle"
-     style="display:block;margin:2rem auto;"
-     data-ad-client="ca-pub-2200363624984381"
-     data-ad-slot="2136925048"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-
 <div class="footer-links">
   <a href="about.html">من نحن</a>
-  <a href="privacy.html">سياسة الخصوصية</a>
+  <a href="privacy.html">الخصوصية</a>
   <a href="contact.html">اتصل بنا</a>
 </div>
 
@@ -206,7 +276,7 @@ body{
 </div>
 
 <script>
-// الأكورديون
+// --- الأكورديون المتجاوب ---
 var acc = document.getElementsByClassName("accordion");
 for (var i = 0; i < acc.length; i++) {
   acc[i].addEventListener("click", function() {
@@ -218,29 +288,30 @@ for (var i = 0; i < acc.length; i++) {
   });
 }
 
-// الفقاعات الجانبية
-function createBubble(container){
+// --- نظام الفقاعات المتجاوب ---
+function createBubble(container) {
   const bubble = document.createElement('div');
   bubble.classList.add('bubble-tube');
-  const size = Math.random()*15+10;
-  bubble.style.width = size+'px';
-  bubble.style.height = size+'px';
-  bubble.style.left = Math.random()*100+'%';
-  bubble.style.animationDuration = (Math.random()*4+7)+'s';
+  const size = Math.random() * 15 + 10;
+  bubble.style.width = size + 'px';
+  bubble.style.height = size + 'px';
+  bubble.style.left = Math.random() * 100 + '%';
+  bubble.style.animationDuration = (Math.random() * 5 + 5) + 's';
   container.appendChild(bubble);
-  setTimeout(()=> bubble.remove(), 10000);
+  setTimeout(() => bubble.remove(), 10000);
 }
-setInterval(()=> createBubble(document.getElementById('bubble-container-left')), 500);
-setInterval(()=> createBubble(document.getElementById('bubble-container-right')), 500);
+setInterval(() => createBubble(document.getElementById('bubble-container-left')), 600);
+setInterval(() => createBubble(document.getElementById('bubble-container-right')), 600);
 
-// تأثير التوهج التلقائي لشريط التواصل
+// --- التوهج التلقائي الذكي لشريط التواصل ---
 const socialLinks = document.querySelectorAll(".social-bar a");
 let socialIdx = 0;
-setInterval(() => {
+function autoGlow() {
   socialLinks.forEach(l => l.classList.remove("auto-hover"));
   socialLinks[socialIdx].classList.add("auto-hover");
   socialIdx = (socialIdx + 1) % socialLinks.length;
-}, 1500);
+}
+setInterval(autoGlow, 2000);
 </script>
 
 </body>
