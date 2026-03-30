@@ -2,13 +2,15 @@
 <html lang="ar">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- تم إضافة هذا السطر لضمان التجاوب الأساسي -->
+<!-- ميزة التجاوب الأساسية -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- منع التخزين المؤقت -->
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <title>Official site of the channel HOWDY ENGLISH</title>
 
-<!-- Google Analytics & AdSense (تبقى كما هي) -->
+<!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XCGN3QQWVJ"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -16,12 +18,18 @@
   gtag('js', new Date());
   gtag('config', 'G-XCGN3QQWVJ');
 </script>
+
+<!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2200363624984381" crossorigin="anonymous"></script>
+
+<!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <style>
-/* تحسينات التجاوب الأساسية */
-html{ font-size:110%; scroll-behavior:smooth; } /* تقليل الحجم الافتراضي قليلاً للتناسب */
+/* --- التنسيق العام المتجاوب --- */
+html{ font-size:100%; scroll-behavior:smooth; }
+@media (min-width: 768px) { html { font-size: 120%; } }
+
 body{
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   direction:rtl;
@@ -33,15 +41,15 @@ body{
   color:#f0f8ff;
   align-items:center;
   overflow-x:hidden;
-  padding-bottom:5rem; /* مساحة إضافية للشريط السفلي */
+  padding-bottom:5rem;
 }
 
-/* --- العنوان الحيوي (تجاوبي) --- */
+/* --- العنوان الحيوي (متجاوب) --- */
 .live-title{
-  font-size: 2.5rem; /* حجم أصغر قليلاً للكمبيوتر */
+  font-size:1.8rem;
   font-weight:bold;
   text-align:center;
-  margin:1.5rem 10px;
+  margin:1.5rem 0.5rem;
   background:linear-gradient(90deg,#00ff00,#00ffff,#00ff00);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
@@ -49,16 +57,15 @@ body{
   animation:greenWave 5s linear infinite,floatWave 3s ease-in-out infinite;
   text-shadow:0 0 15px #00ff00,0 0 25px #00ffff;
   display:inline-block;
-  word-wrap: break-word;
 }
+@media (min-width: 768px) { .live-title { font-size: 3rem; } }
 
-/* --- الغلاف (تجاوبي بالكامل) --- */
+/* --- الغلاف (متجاوب) --- */
 .cover{
   position:relative;
-  width:90%; /* عرض مرن */
+  width:95%;
   max-width:820px;
-  height: auto; /* ارتفاع تلقائي */
-  aspect-ratio: 16 / 9; /* الحفاظ على أبعاد الصورة */
+  aspect-ratio: 16 / 7;
   margin:1rem auto;
   overflow:hidden;
   border-radius:15px;
@@ -68,23 +75,59 @@ body{
   width:100%;
   height:100%;
   object-fit:cover;
+  filter:brightness(90%) saturate(125%);
 }
 
-/* --- الأكورديون (تجاوبي) --- */
+/* --- الأكورديون (تنسيق موحد ومتجاوب) --- */
 .accordion{
   width:92%;
   max-width:1100px;
-  padding:12px 15px;
-  margin:8px auto;
+  padding:14px 20px;
+  margin:10px auto;
+  cursor:pointer;
+  text-align:right;
   font-size:1.1rem;
-  border-radius:12px;
+  border:none;
+  border-radius:15px;
+  box-shadow:0 4px 6px rgba(0,0,0,0.4);
+  position:relative;
+  transition:all 0.3s ease;
   background:linear-gradient(135deg,#6a11cb,#2575fc);
   color:white;
+}
+.accordion::after{
+  content:"▶";
+  font-size:14px;
+  position:absolute;
+  left:20px;
+  top:50%;
+  transform:translateY(-50%) rotate(0deg);
+}
+.accordion.active::after{transform:translateY(-50%) rotate(90deg);}
+.accordion:hover{ transform:translateY(-2px); background:linear-gradient(135deg,#ff416c,#ff4b2b); }
+
+/* --- لوحات الأكورديون --- */
+.panel{display:none;width:92%;max-width:1100px;margin:0 auto 1rem auto;padding:1rem;background:#000000bb;border-radius:15px;backdrop-filter:blur(4px);box-sizing:border-box;}
+.panel .accordion{background:linear-gradient(135deg,#11998e,#38ef7d); margin-top:10px; font-size:1rem; width:100%;}
+
+/* --- زر تختيم A1-A2 --- */
+.level-complete{
+  width:92%;
+  max-width:1100px;
+  margin:15px auto;
+  padding:16px;
+  font-size:1.2rem;
+  font-weight:bold;
+  text-align:center;
+  border:none;
+  border-radius:18px;
+  color:white;
+  background:linear-gradient(135deg,#00c9ff,#92fe9d);
+  box-shadow:0 6px 12px rgba(0,0,0,0.4);
   cursor:pointer;
-  transition: 0.3s;
 }
 
-/* --- شريط التواصل (تجاوبي للجوال) --- */
+/* --- سبورة التواصل (متجاوبة تماماً) --- */
 .social-bar{
   position:fixed;
   bottom:0;
@@ -94,75 +137,129 @@ body{
   display:flex;
   justify-content:center;
   align-items:center;
-  padding:0.6rem 0;
-  gap: 1rem; /* مسافات أصغر للجوال */
+  padding:0.5rem 0;
+  gap:1rem;
   box-shadow:0 -3px 10px rgba(0,0,0,0.3);
   z-index:999;
 }
 .social-bar a{
   color:#000;
-  font-size:0.9rem; /* نص أصغر للجوال */
+  font-size:0.8rem;
+  font-weight:bold;
   display:flex;
-  flex-direction: column; /* أيقونة فوق النص في الجوال */
+  flex-direction:column;
   align-items:center;
-  gap:2px;
+  transition:0.3s;
+}
+@media (min-width: 600px) {
+  .social-bar a { font-size: 1.1rem; flex-direction: row; gap: 0.5rem; }
+  .social-bar { gap: 2rem; padding: 0.8rem 0; }
 }
 
-/* --- إعدادات خاصة للشاشات الصغيرة (Mobile) --- */
-@media screen and (max-width: 600px) {
-  .live-title { font-size: 1.5rem; } /* تصغير العنوان في الجوال */
-  .accordion { font-size: 1rem; padding: 10px; }
-  .social-bar { gap: 0.8rem; }
-  .social-bar a { font-size: 0.7rem; }
-  .social-bar i { font-size: 1.1rem; }
-  html { font-size: 100%; }
+/* التوهج التلقائي */
+.social-bar a.auto-hover.youtube{color:#ff0000; transform:scale(1.1);}
+.social-bar a.auto-hover.facebook{color:#1877f2; transform:scale(1.1);}
+
+/* --- أنابيب جانبية --- */
+#bubble-container-left,#bubble-container-right{position:fixed;top:0;width:2rem;height:100%;pointer-events:none;z-index:1;}
+#bubble-container-left{left:0;} #bubble-container-right{right:0;}
+.bubble-tube{
+  position:absolute; bottom:0; border-radius:50%;
+  background:radial-gradient(circle at 30% 30%, rgba(200,160,255,0.6), rgba(138,43,226,0.4));
+  animation:rise 10s linear infinite;
 }
 
-/* --- إعدادات خاصة للشاشات الكبيرة (Desktop) --- */
-@media screen and (min-width: 1024px) {
-  .social-bar a { flex-direction: row; font-size: 1.1rem; gap: 8px; }
-  .social-bar { padding: 0.8rem 0; gap: 2.5rem; }
-}
+/* --- الفوتر --- */
+.footer-links{ text-align:center; margin:2rem 0; }
+.footer-links a{ margin:0 10px; color:#fff; font-size:0.9rem; background:rgba(255,255,255,0.1); padding:5px 10px; border-radius:5px; }
 
-/* باقي التنسيقات (الأنيميشن، اللوحات، الفقاعات) تبقى كما هي في الكود الأصلي لديك */
-@keyframes greenWave{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+@keyframes rise{0%{transform:translateY(0);opacity:0.8;}100%{transform:translateY(-110vh);opacity:0;}}
+@keyframes greenWave{0%{background-position:0% 50%;}100%{background-position:300% 50%;}}
 @keyframes floatWave{0%,100%{transform:translateY(0);}50%{transform:translateY(-5px);}}
-.panel{display:none;width:90%;max-width:1100px;margin:0 auto 1rem auto;padding:1rem;background:#000000bb;border-radius:15px;backdrop-filter:blur(4px);}
-/* ... باقي كود CSS الخاص بك ... */
+
 </style>
 </head>
 <body>
 
-<!-- المحرك الرئيسي والفقاعات تبقى كما هي -->
 <div id="bubble-container-left"></div>
 <div id="bubble-container-right"></div>
 
 <h1 class="live-title">-Official page howdy english-</h1>
 
 <div class="cover">
-  <img src="Phoenix_10_3D_words_Howdy_English_made_of_glossy_transparent_g_2 (2).jpg" alt="Phoenix 3D Words Howdy English">
+  <img src="Phoenix_10_3D_words_Howdy_English_made_of_glossy_transparent_g_2 (2).jpg" alt="Howdy English Cover">
 </div>
 
 <button class="level-complete">🎓 المستوى الأول | A1 - A2 |</button>
 
 <button class="accordion">الأساسيات</button>
 <div class="panel">
-  <a href="basic-words.html"><button class="accordion" style="background:#11998e;">المفردات</button></a>
-  <a href="greetings.html"><button class="accordion" style="background:#11998e;">التحيات</button></a>
-  <a href="practical-guide.html"><button class="accordion" style="background:#6a11cb; border: 1px solid #0f0;">📘 الدليل العملي لتكوين الجملة</button></a>
+  <a href="basic-words.html" style="text-decoration:none;"><button class="accordion">المفردات</button></a>
+  <a href="greetings.html" style="text-decoration:none;"><button class="accordion">التحيات</button></a>
+  <a href="practical-guide.html" style="text-decoration:none;">
+    <button class="accordion" style="background:linear-gradient(135deg,#6a11cb,#2575fc); border: 1px solid #00ff00;">
+      📘 الدليل العملي لتكوين الجملة
+    </button>
+  </a>
 </div>
 
-<!-- شريط التواصل الاجتماعي التجاوبي -->
+<div class="footer-links">
+  <a href="about.html">من نحن</a>
+  <a href="privacy.html">سياسة الخصوصية</a>
+  <a href="contact.html">اتصل بنا</a>
+</div>
+
 <div class="social-bar">
-  <a href="https://www.youtube.com/channel/UCFSquuv3GpfUA5RsB3esIfw" target="_blank" class="youtube"><i class="fab fa-youtube"></i> <span>يوتيوب</span></a>
-  <a href="https://www.facebook.com/profile.php?id=61588006462049" target="_blank" class="facebook"><i class="fab fa-facebook"></i> <span>فايسبوك</span></a>
-  <a href="https://www.tiktok.com/@howdy5english" target="_blank" class="tiktok"><i class="fab fa-tiktok"></i> <span>تيك توك</span></a>
-  <a href="https://www.instagram.com/howdy5english/" target="_blank" class="instagram"><i class="fab fa-instagram"></i> <span>انستقرام</span></a>
+  <a href="https://www.youtube.com/channel/UCFSquuv3GpfUA5RsB3esIfw" target="_blank" class="youtube">
+    <i class="fab fa-youtube"></i> <span>يوتيوب</span>
+  </a>
+  <a href="https://www.facebook.com/profile.php?id=61588006462049" target="_blank" class="facebook">
+    <i class="fab fa-facebook"></i> <span>فايسبوك</span>
+  </a>
+  <a href="https://www.tiktok.com/@howdy5english" target="_blank" class="tiktok">
+    <i class="fab fa-tiktok"></i> <span>تيك توك</span>
+  </a>
+  <a href="https://www.instagram.com/howdy5english/" target="_blank" class="instagram">
+    <i class="fab fa-instagram"></i> <span>انستغرام</span>
+  </a>
 </div>
 
-<!-- كود السكريبت الأصلي الخاص بك يبقى كما هو دون تغيير -->
 <script>
-// ... كود السكريبت الخاص بالأكورديون والفقاعات والزووم كما هو ...
+// الأكورديون
+var acc = document.getElementsByClassName("accordion");
+for (var i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    var panel = this.nextElementSibling;
+    if(panel && panel.classList.contains("panel")){
+      this.classList.toggle("active");
+      panel.style.display = (panel.style.display === "block") ? "none" : "block";
+    }
+  });
+}
+
+// الفقاعات
+function createBubble(container){
+  const bubble = document.createElement('div');
+  bubble.classList.add('bubble-tube');
+  const size = Math.random()*15+10;
+  bubble.style.width = size+'px';
+  bubble.style.height = size+'px';
+  bubble.style.left = Math.random()*100+'%';
+  bubble.style.animationDuration = (Math.random()*4+6)+'s';
+  container.appendChild(bubble);
+  setTimeout(()=> bubble.remove(), 10000);
+}
+setInterval(()=> createBubble(document.getElementById('bubble-container-left')), 600);
+setInterval(()=> createBubble(document.getElementById('bubble-container-right')), 600);
+
+// توهج اجتماعي تلقائي
+const socialLinks = document.querySelectorAll(".social-bar a");
+let socialIdx = 0;
+setInterval(() => {
+  socialLinks.forEach(l => l.classList.remove("auto-hover"));
+  socialLinks[socialIdx].classList.add("auto-hover");
+  socialIdx = (socialIdx + 1) % socialLinks.length;
+}, 2000);
 </script>
 
 </body>
