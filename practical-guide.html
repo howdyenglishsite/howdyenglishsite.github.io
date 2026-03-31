@@ -182,6 +182,15 @@
             icons[index].style.boxShadow = "0 0 20px rgba(255, 255, 255, 0.5), 0 0 40px currentColor";
             index = (index + 1) % icons.length;
         }, 2500);
+		
+/* --- إعادة تحميل الصفحة لمرة واحدة --- */
+window.addEventListener('load', function() {
+  if (!sessionStorage.getItem('reloaded')) {
+    sessionStorage.setItem('reloaded', 'true'); 
+    setTimeout(()=>{ location.reload(true); }, 500);
+  } else { sessionStorage.removeItem('reloaded'); }
+});
+
     </script>
 
 </body>
