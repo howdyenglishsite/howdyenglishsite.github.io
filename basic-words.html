@@ -199,9 +199,10 @@ p{ line-height:2.2; margin:0.5rem 0; text-align: right; }
     </div>
 
     <div class="video">
-        <a href="https://www.youtube.com/watch?v=NrQUvUcNsnw" target="_blank">
-            <img src="https://img.youtube.com/vi/NrQUvUcNsnw/hqdefault.jpg" alt="English Basics">
-        </a>
+    
+    <a href="https://youtu.be/76x2dUzo1zY" target="_blank">
+        <img src="https://img.youtube.com/vi/76x2dUzo1zY/hqdefault.jpg">
+    </a>
         <p style="text-align:center;">اضغط لمشاهدة شرح أساسيات اللغة</p>
     </div>
 
@@ -286,6 +287,15 @@ setInterval(() => {
     icons[index].style.boxShadow = "0 0 20px rgba(255, 255, 255, 0.5), 0 0 40px currentColor";
     index = (index + 1) % icons.length;
 }, 2500);
+
+/* --- إعادة تحميل الصفحة لمرة واحدة --- */
+window.addEventListener('load', function() {
+  if (!sessionStorage.getItem('reloaded')) {
+    sessionStorage.setItem('reloaded', 'true'); 
+    setTimeout(()=>{ location.reload(true); }, 500);
+  } else { sessionStorage.removeItem('reloaded'); }
+});
+
 </script>
 
 </body>
