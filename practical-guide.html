@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>الدليل العملي لتكوين الجملة</title>
     
-    <!-- رابط مكتبة الأيقونات -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -27,7 +26,6 @@
             max-width: 1100px;
         }
 
-        /* تنسيق زر العودة */
         .back-link {
             display: inline-block;
             margin-bottom: 20px;
@@ -40,12 +38,8 @@
             transition: 0.3s;
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
-        .back-link:hover { 
-            background: #ff4b2b; 
-            transform: scale(1.05); 
-        }
+        .back-link:hover { background: #ff4b2b; transform: scale(1.05); }
 
-        /* تنسيق حاويات الدروس */
         .file-section {
             background: rgba(0, 0, 0, 0.3);
             border-radius: 20px;
@@ -71,32 +65,41 @@
             background: white;
         }
 
-        /* ===== شريط التواصل الاجتماعي الذهبي المطور ===== */
-        .social-bar {
-            position: fixed;
-            top: 50%;
-            left: 0;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            padding: 1.2rem;
-            gap: 1.5rem;
-            border-radius: 0 30px 30px 0;
-            z-index: 9999;
+        /* ===== نظام شريط التواصل المطور (المطلوب) ===== */
+        .social-bar{
+            position:fixed;
+            top:50%;
+            left:0;
+            transform:translateY(-50%);
+            display:flex;
+            flex-direction:column;
+            padding:1.2rem;
+            gap:1.5rem;
+            border-radius:0 30px 30px 0;
+            z-index:999;
             background: linear-gradient(135deg, #FFD700, #FFB900);
-            box-shadow: 5px 0 25px rgba(255, 215, 0, 0.4);
+            box-shadow: 5px 0 25px rgba(255, 215, 0, 0.3);
             transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .social-bar i {
-            font-size: 1.8rem;
-            width: 55px;
-            height: 55px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%; 
-            color: white;
+        .social-bar a{
+            text-decoration:none;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            transition: 0.3s;
+        }
+
+        .social-bar i{
+            font-size:1.8rem;
+            width:55px;
+            height:55px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            border-radius:50%; 
+            color:white;
+            position:relative;
             box-shadow: 0 8px 15px rgba(0,0,0,0.3);
             transition: all 0.4s ease;
         }
@@ -106,9 +109,14 @@
         .tiktok-icon { background: linear-gradient(135deg, #000000, #333333); border: 1px solid rgba(255,255,255,0.2); }
         .instagram-icon { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
 
+        .social-bar a:hover i {
+            transform: scale(1.2) rotate(10deg);
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
+        }
+
         /* ميزة التجاوب للهواتف */
         @media screen and (max-width: 767px) {
-            body { padding: 10px; padding-bottom: 90px; } /* ترك مساحة للشريط السفلي */
+            body { padding: 10px; padding-bottom: 100px; } /* ترك مساحة للشريط السفلي في الهاتف */
             .container { width: 100%; }
             iframe { height: 500px; }
             .social-bar {
@@ -154,38 +162,26 @@
         </div>
     </div>
 
-    <!-- شريط التواصل الاجتماعي -->
     <div class="social-bar">
-      <a href="https://www.youtube.com/channel/UCFSquuv3GpfUA5RsB3esIfw" target="_blank" title="يوتيوب">
-          <i class="fab fa-youtube youtube-icon"></i>
-      </a>
-      <a href="https://www.facebook.com/profile.php?id=61588006462049" target="_blank" title="فيسبوك">
-          <i class="fab fa-facebook-f facebook-icon"></i>
-      </a>
-      <a href="https://www.tiktok.com/@howdy5english" target="_blank" title="تيك توك">
-          <i class="fab fa-tiktok tiktok-icon"></i>
-      </a>
-      <a href="https://www.instagram.com/howdy5english/" target="_blank" title="انستغرام">
-          <i class="fab fa-instagram instagram-icon"></i>
-      </a>
+      <a href="https://www.youtube.com/channel/UCFSquuv3GpfUA5RsB3esIfw" target="_blank" title="يوتيوب"><i class="fab fa-youtube youtube-icon"></i></a>
+      <a href="https://www.facebook.com/profile.php?id=61588006462049" target="_blank" title="فيسبوك"><i class="fab fa-facebook-f facebook-icon"></i></a>
+      <a href="https://www.tiktok.com/@howdy5english" target="_blank" title="تيك توك"><i class="fab fa-tiktok tiktok-icon"></i></a>
+      <a href="https://www.instagram.com/howdy5english/" target="_blank" title="انستغرام"><i class="fab fa-instagram instagram-icon"></i></a>
     </div>
 
     <script>
-    const icons = document.querySelectorAll('.social-bar i');
-    let currentIndex = 0;
-
-    setInterval(() => {
-        icons.forEach(i => {
-            i.style.transform = "scale(1)";
-            i.style.boxShadow = "0 8px 15px rgba(0,0,0,0.3)";
-        });
-
-        const activeIcon = icons[currentIndex];
-        activeIcon.style.transform = "scale(1.2) translateY(-5px) rotate(8deg)";
-        activeIcon.style.boxShadow = "0 0 20px rgba(255, 255, 255, 0.5), 0 0 40px currentColor";
-
-        currentIndex = (currentIndex + 1) % icons.length;
-    }, 2500);
+        /* الأنيميشن التلقائي كما في المثال تماماً */
+        const icons = document.querySelectorAll('.social-bar i');
+        let index = 0;
+        setInterval(() => {
+            icons.forEach(i => {
+                i.style.transform = "scale(1)";
+                i.style.boxShadow = "0 8px 15px rgba(0,0,0,0.3)";
+            });
+            icons[index].style.transform = "scale(1.2) translateY(-5px) rotate(5deg)";
+            icons[index].style.boxShadow = "0 0 20px rgba(255, 255, 255, 0.5), 0 0 40px currentColor";
+            index = (index + 1) % icons.length;
+        }, 2500);
     </script>
 
 </body>
