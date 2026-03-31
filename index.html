@@ -274,6 +274,14 @@ function runSocialAutoHover() {
   socialIdx = (socialIdx + 1) % socialLinks.length;
 }
 setInterval(runSocialAutoHover, 1500);
+  
+/* --- إعادة تحميل الصفحة لمرة واحدة --- */
+window.addEventListener('load', function() {
+  if (!sessionStorage.getItem('reloaded')) {
+    sessionStorage.setItem('reloaded', 'true'); 
+    setTimeout(()=>{ location.reload(true); }, 500);
+  } else { sessionStorage.removeItem('reloaded'); }
+});
 </script>
 
 </body>
