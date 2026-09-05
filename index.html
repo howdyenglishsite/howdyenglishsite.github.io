@@ -24,8 +24,14 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
 
 <style>
-html { font-size: 16px; scroll-behavior: smooth; }
-@media (min-width: 768px) { html { font-size: 20px; } }
+/* --- التصميم المتجاوب الأساسي --- */
+html { 
+  font-size: 14px; /* حجم مناسب للهواتف الصغيرة */
+  scroll-behavior: smooth; 
+}
+@media (min-width: 480px) { html { font-size: 16px; } }
+@media (min-width: 768px) { html { font-size: 18px; } }
+@media (min-width: 1024px) { html { font-size: 20px; } }
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -37,14 +43,14 @@ body {
   color: #f0f8ff;
   align-items: center;
   overflow-x: hidden;
-  padding-bottom: 6rem;
+  padding-bottom: 7rem; /* مساحة كافية حتى لا يغطي الشريط السفلي المحتوى */
 }
 
 .live-title {
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   font-weight: bold;
   text-align: center;
-  margin: 1.5rem 0;
+  margin: 1.2rem 1rem;
   background: linear-gradient(90deg,#00ff00,#00ffff,#00ff00);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -52,18 +58,18 @@ body {
   animation: greenWave 5s linear infinite, floatWave 3s ease-in-out infinite;
   text-shadow: 0 0 15px rgba(0,255,0,0.5);
 }
-@media (min-width: 768px) { .live-title { font-size: 3rem; } }
+@media (min-width: 768px) { .live-title { font-size: 2.5rem; } }
 
 @keyframes greenWave { 0%{background-position:0% 50%;} 50%{background-position:100% 50%;} 100%{background-position:0% 50%;} }
 @keyframes floatWave { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-5px);} }
 
-/* --- الغلاف مع تأثير اللمعان المائل --- */
+/* --- الغلاف --- */
 .cover {
   position: relative;
-  width: 95%;
+  width: 92%;
   max-width: 820px;
   aspect-ratio: 16/7;
-  margin: 1rem auto;
+  margin: 0.5rem auto 1rem;
   overflow: hidden;
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.4);
@@ -71,7 +77,6 @@ body {
 .cover img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
 .cover:hover img { transform: scale(1.05); }
 
-/* الطبقة التي تمر بشكل مائل */
 .cover::after {
   content: "";
   position: absolute;
@@ -80,7 +85,7 @@ body {
   width: 20%;
   height: 200%;
   background: rgba(255, 255, 255, 0.4);
-  transform: rotate(30deg); /* زاوية الميلان */
+  transform: rotate(30deg);
   filter: blur(10px);
   animation: shineDiagonal 4s infinite;
   pointer-events: none;
@@ -94,46 +99,46 @@ body {
 }
 
 .level-complete {
-  width: 95%; max-width: 1100px;
-  padding: 16px; margin: 20px auto;
+  width: 92%; max-width: 1100px;
+  padding: 14px; margin: 15px auto;
   cursor: pointer; text-align: center;
   border: none; border-radius: 18px;
-  color: white; font-weight: bold; font-size: 1.3rem;
+  color: white; font-weight: bold; font-size: 1.1rem;
   background: linear-gradient(135deg,#00c9ff,#92fe9d);
   box-shadow: 0 6px 12px rgba(0,0,0,0.4);
   transition: 0.3s ease;
 }
 
 .accordion {
-  width: 95%; max-width: 1100px;
-  padding: 14px 20px; margin: 10px auto;
+  width: 92%; max-width: 1100px;
+  padding: 12px 18px; margin: 8px auto;
   cursor: pointer; text-align: right;
   border: none; border-radius: 15px;
-  color: white; font-size: 1.2rem;
+  color: white; font-size: 1.05rem;
   background: linear-gradient(135deg,#6a11cb,#2575fc);
   box-shadow: 0 4px 6px rgba(0,0,0,0.4);
   position: relative; transition: all 0.3s ease;
   display: block;
 }
-.accordion::after { content: "▶"; position: absolute; left: 20px; top: 50%; transform: translateY(-50%) rotate(0deg); transition: 0.3s; font-size: 18px; }
+.accordion::after { content: "▶"; position: absolute; left: 15px; top: 50%; transform: translateY(-50%) rotate(0deg); transition: 0.3s; font-size: 14px; }
 .accordion.active::after { transform: translateY(-50%) rotate(90deg); }
 
 .accordion:hover, .accordion.active {
-  transform: translateY(-3px);
+  transform: translateY(-2px);
   box-shadow: 0 8px 12px rgba(0,0,0,0.5);
   background: linear-gradient(135deg,#ff416c,#ff4b2b);
 }
 
 .panel {
-  display: none; width: 95%; max-width: 1100px;
-  margin: 0 auto 10px; padding: 1.5rem;
+  display: none; width: 92%; max-width: 1100px;
+  margin: 0 auto 10px; padding: 1rem;
   background: rgba(0,0,0,0.7); border-radius: 15px;
   backdrop-filter: blur(4px); box-sizing: border-box;
 }
 
 .panel .sub-btn {
   background: linear-gradient(135deg,#11998e,#38ef7d) !important;
-  margin-top: 10px; font-size: 1.1rem; text-align: center;
+  margin-top: 8px; font-size: 1rem; text-align: center; width: 100%;
 }
 .panel .sub-btn:hover, .panel .sub-btn.active {
   background: linear-gradient(135deg,#43cea2,#185a9d) !important;
@@ -141,11 +146,16 @@ body {
 
 .panel .guide-btn {
   background: linear-gradient(135deg,#6a11cb,#2575fc) !important;
-  font-size: 0.9rem; text-align: center;
+  font-size: 0.9rem; text-align: center; width: 100%;
 }
 
-#bubble-container-left, #bubble-container-right { position: fixed; top: 0; width: 3rem; height: 100%; pointer-events: none; z-index: 1; }
-#bubble-container-left { left: 0; } #bubble-container-right { right: 0; }
+/* إخفاء الفقاعات في الهواتف لزيادة الأداء وسلاسة التصفح */
+#bubble-container-left, #bubble-container-right { display: none; }
+@media (min-width: 768px) {
+  #bubble-container-left, #bubble-container-right { position: fixed; top: 0; width: 3rem; height: 100%; pointer-events: none; z-index: 1; display: block; }
+  #bubble-container-left { left: 0; } #bubble-container-right { right: 0; }
+}
+
 .bubble-tube {
   position: absolute; bottom: 0; border-radius: 50%;
   background: radial-gradient(circle at 30% 30%, rgba(200,160,255,0.8), rgba(138,43,226,0.5));
@@ -154,21 +164,34 @@ body {
 }
 @keyframes rise { 0%{transform:translateY(0) scale(1); opacity:0.8;} 100%{transform:translateY(-110vh) scale(0.8); opacity:0;} }
 
+/* --- شريط التواصل الاجتماعي السفلي المتجاوب --- */
 .social-bar {
   position: fixed; bottom: 0; left: 0; width: 100%;
-  background: #FFD700; display: flex; justify-content: center;
-  align-items: center; padding: 0.8rem 0; gap: 0.5rem;
+  background: #FFD700; display: flex; justify-content: space-around;
+  align-items: center; padding: 0.5rem 0.2rem; gap: 0.2rem;
   box-shadow: 0 -3px 10px rgba(0,0,0,0.3); z-index: 1000;
+  box-sizing: border-box;
 }
-.social-bar a { color: #000; text-decoration: none; font-size: 1.2rem; display: flex; align-items: center; gap: 0.4rem; padding: 6px 12px; border-radius: 12px; transition: all 0.4s ease; }
-.social-bar a.auto-hover.youtube { background: #ff0000; color: #fff !important; box-shadow: 0 0 15px #ff0000; transform: scale(1.1); }
-.social-bar a.auto-hover.facebook { background: #1877f2; color: #fff !important; box-shadow: 0 0 15px #1877f2; transform: scale(1.1); }
-.social-bar a.auto-hover.tiktok { background: #00f2ea; color: #fff !important; box-shadow: 0 0 15px #00f2ea; transform: scale(1.1); }
-.social-bar a.auto-hover.instagram { background: linear-gradient(45deg,#833ab4,#fd1d1d,#fcb045); color: #fff !important; box-shadow: 0 0 15px #fd1d1d; transform: scale(1.1); }
+.social-bar a { 
+  color: #000; text-decoration: none; font-size: 0.9rem; 
+  display: flex; align-items: center; justify-content: center; gap: 0.3rem; 
+  padding: 6px 8px; border-radius: 10px; transition: all 0.4s ease; 
+  flex: 1; text-align: center;
+}
+.social-bar a span { display: none; } /* إخفاء النص في الشاشات الصغيرة جداً واكتفاء بالايقونات لمنع الازدحام */
+@media (min-width: 576px) {
+  .social-bar a span { display: inline; }
+  .social-bar a { font-size: 1rem; padding: 6px 10px; }
+}
 
-.footer-links { margin: 2rem 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; width: 100%; }
+.social-bar a.auto-hover.youtube { background: #ff0000; color: #fff !important; box-shadow: 0 0 10px #ff0000; transform: scale(1.05); }
+.social-bar a.auto-hover.facebook { background: #1877f2; color: #fff !important; box-shadow: 0 0 10px #1877f2; transform: scale(1.05); }
+.social-bar a.auto-hover.tiktok { background: #00f2ea; color: #fff !important; box-shadow: 0 0 10px #00f2ea; transform: scale(1.05); }
+.social-bar a.auto-hover.instagram { background: linear-gradient(45deg,#833ab4,#fd1d1d,#fcb045); color: #fff !important; box-shadow: 0 0 10px #fd1d1d; transform: scale(1.05); }
+
+.footer-links { margin: 1.5rem 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; width: 92%; }
 .footer-links a { 
-  padding: 8px 18px; 
+  padding: 8px 14px; 
   border-radius: 30px; 
   background: linear-gradient(135deg,#11998e,#38ef7d); 
   color: white; 
@@ -176,10 +199,11 @@ body {
   transition: 0.3s; 
   display: flex; 
   align-items: center; 
-  gap: 8px; 
+  gap: 6px; 
   font-weight: bold;
+  font-size: 0.9rem;
 }
-.footer-links a i { font-size: 1.1rem; }
+.footer-links a i { font-size: 1rem; }
 .footer-links a:hover { background: linear-gradient(135deg,#ff416c,#ff4b2b); transform: scale(1.05); }
 
 </style>
@@ -199,20 +223,20 @@ body {
 
 <button class="accordion">الأساسيات</button>
 <div class="panel">
-  <a href="basic-words.html" style="text-decoration:none;">
+  <a href="basic-words.html" style="text-decoration:none; display:block;">
     <button class="accordion sub-btn">المفردات</button>
   </a>
-  <a href="greetings.html" style="text-decoration:none;">
+  <a href="greetings.html" style="text-decoration:none; display:block;">
     <button class="accordion sub-btn">التحيات</button>
   </a>
-  <a href="practical-guide.html" style="text-decoration:none;">
+  <a href="practical-guide.html" style="text-decoration:none; display:block;">
     <button class="accordion guide-btn">
       📘 الدليل العملي لتكوين الجملة بالإنجليزي للمبتدئين
     </button>
   </a>
 </div>
 
-<ins class="adsbygoogle" style="display:block; text-align:center; margin: 2rem auto;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-2200363624984381" data-ad-slot="2136925048"></ins>
+<ins class="adsbygoogle" style="display:block; text-align:center; margin: 1.5rem auto;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-2200363624984381" data-ad-slot="2136925048"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 
 <div class="footer-links">
@@ -263,19 +287,27 @@ function createBubble(container){
   container.appendChild(b);
   setTimeout(() => b.remove(), duration * 1000);
 }
-setInterval(() => createBubble(document.getElementById('bubble-container-left')), 400);
-setInterval(() => createBubble(document.getElementById('bubble-container-right')), 400);
+setInterval(() => {
+  const leftCont = document.getElementById('bubble-container-left');
+  const rightCont = document.getElementById('bubble-container-right');
+  if(leftCont && window.innerWidth >= 768) createBubble(leftCont);
+  if(rightCont && window.innerWidth >= 768) createBubble(rightCon);
+}, 400);
 
 const socialLinks = document.querySelectorAll(".social-bar a");
 let socialIdx = 0;
 function runSocialAutoHover() {
   socialLinks.forEach(l => l.classList.remove("auto-hover"));
   socialLinks[socialIdx].classList.add("auto-hover");
-  socialIdx = (socialIdx + 1) % socialLinks.length;
+  socialIdx = (socialIdx + 1) % socialLinks.format ? 0 : (socialIdx + 1) % socialLinks.length;
 }
-setInterval(runSocialAutoHover, 1500);
+// تصحيح بسيط لعداد الأزرار الاجتماعية
+setInterval(() => {
+  socialLinks.forEach(l => l.classList.remove("auto-hover"));
+  socialLinks[socialIdx].classList.add("auto-hover");
+  socialIdx = (socialIdx + 1) % socialLinks.length;
+}, 1500);
   
-/* --- إعادة تحميل الصفحة لمرة واحدة --- */
 window.addEventListener('load', function() {
   if (!sessionStorage.getItem('reloaded')) {
     sessionStorage.setItem('reloaded', 'true'); 
